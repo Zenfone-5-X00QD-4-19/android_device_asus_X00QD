@@ -43,6 +43,33 @@ on fs
     chmod 0644 /mnt/vendor/dsp/fastrpc_shell_3
     mount none /mnt/vendor/dsp/fastrpc_shell_3 /vendor/dsp/cdsp/fastrpc_shell_3 bind
 
+    chown system system /asusfw
+    chown system system /asusfw/*
+    chmod 0775 /asusfw
+    chmod 0775 /asusfw/*
+
+    chown system system /asusfw/asusfw_version
+    chmod 0775 /asusfw/asusfw_version
+
+    wait /dev/block/bootdevice/by-name/APD
+    chown root system /APD
+    chmod 0771 /APD
+    restorecon_recursive /APD
+    wait dev/block/bootdevice/by-name/asdf
+    chown root system /asdf
+    chmod 0771 /asdf
+    restorecon_recursive /asdf
+
+    chmod 0770 /vendor/factory
+    restorecon_recursive /vendor/factory
+
+    chmod 770 /mnt/vendor/persist
+    chmod 770 /mnt/vendor/persist/data
+
+    chown system system /vendor/ADF
+    chmod 0775 /vendor/ADF
+    restorecon_recursive /vendor/ADF
+
 on post-fs
     start vendor.qseecomd
     wait_for_prop vendor.sys.listeners.registered true

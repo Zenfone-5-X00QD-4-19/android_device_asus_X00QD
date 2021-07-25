@@ -27,39 +27,15 @@
 #
 #
 
-on fs
-    chown system system /asusfw
-    chown system system /asusfw/*
-    chmod 0775 /asusfw
-    chmod 0775 /asusfw/*
-
-    chown system system /asusfw/asusfw_version
-    chmod 0775 /asusfw/asusfw_version
-
-    wait /dev/block/bootdevice/by-name/APD
-    chown root system /APD
-    chmod 0771 /APD
-    restorecon_recursive /APD
-    wait dev/block/bootdevice/by-name/asdf
-    chown root system /asdf
-    chmod 0771 /asdf
-    restorecon_recursive /asdf
-
-    chmod 0770 /vendor/factory
-    restorecon_recursive /vendor/factory
-
-    chmod 770 /mnt/vendor/persist
-    chmod 770 /mnt/vendor/persist/data
-
-    chown system system /vendor/ADF
-    chmod 0775 /vendor/ADF
-    restorecon_recursive /vendor/ADF
+on early-init
+    mkdir /vendor/factory 0755 system system
 
 on charger
     chown system system /vendor/factory
     chmod 0770 /vendor/factory
-    chown root root /vendor/asdf
-    chmod 0775 /vendor/asdf
+
+    chown root root /asdf
+    chmod 0775 /asdf
 
 on early-boot
     # for backward compatibility
