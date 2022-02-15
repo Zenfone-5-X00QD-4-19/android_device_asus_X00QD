@@ -118,6 +118,7 @@ debug.stagefright.omx_default_rank=0
 dalvik.vm.dex2oat64.enabled=true
 
 # Display
+git checkout --ours -- vendor.prop
 debug.sf.enable_egl_image_tracker=1
 debug.sf.disable_backpressure=1
 debug.sf.enable_transaction_tracing=false
