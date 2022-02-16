@@ -70,6 +70,7 @@ TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
 # Kernel
 BOARD_KERNEL_CMDLINE := \
+    androidboot.boot_devices=soc/c0c4000.sdhci \
     console=ttyMSM0,115200n8 \
     androidboot.console=ttyMSM0 \
     earlycon=msm_serial_dm,0xc170000 \
