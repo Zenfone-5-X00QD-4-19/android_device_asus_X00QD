@@ -175,6 +175,9 @@ persist.dbg.volte_avail_ovr=1
 persist.dbg.vt_avail_ovr=1
 persist.dbg.wfc_avail_ovr=1
 
+# USB
+vendor.usb.product_string=Asus Zenfone 5
+
 # Sensors
 ro.vendor.sdk.sensors.gestures=false
 ro.vendor.sensors.cmc=false
