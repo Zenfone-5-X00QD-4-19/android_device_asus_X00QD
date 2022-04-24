@@ -556,8 +556,17 @@
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia1" value="1" />
     </path>
 
+    <path name="deep-buffer-playback headphones-hifi-filter">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia1" value="1" />
+    </path>
+
     <path name="deep-buffer-playback speaker-and-headphones">
         <path name="deep-buffer-playback headphones" />
+        <path name="deep-buffer-playback speaker" />
+    </path>
+
+    <path name="deep-buffer-playback speaker-and-headphones-hifi-filter">
+        <path name="deep-buffer-playback headphones-hifi-filter" />
         <path name="deep-buffer-playback speaker" />
     </path>
 
@@ -701,8 +710,17 @@
         <path name="low-latency-playback speaker" />
     </path>
 
+    <path name="low-latency-playback headphones-hifi-filter">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia5" value="1" />
+    </path>
+
     <path name="low-latency-playback speaker-and-bt-sco-wb">
         <path name="low-latency-playback bt-sco-wb" />
+        <path name="low-latency-playback speaker" />
+    </path>
+
+    <path name="low-latency-playback speaker-and-headphones-hifi-filter">
+        <path name="low-latency-playback headphones-hifi-filter" />
         <path name="low-latency-playback speaker" />
     </path>
 
@@ -729,6 +747,15 @@
     <path name="audio-ull-playback speaker-and-headphones">
         <path name="audio-ull-playback speaker" />
         <path name="audio-ull-playback headphones" />
+    </path>
+
+    <path name="audio-ull-playback headphones-hifi-filter">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia8" value="1" />
+    </path>
+
+    <path name="audio-ull-playback speaker-and-headphones-hifi-filter">
+        <path name="audio-ull-playback speaker" />
+        <path name="audio-ull-playback headphones-hifi-filter" />
     </path>
 
     <path name="audio-ull-playback hdmi">
@@ -868,6 +895,10 @@
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia4" value="1" />
     </path>
 
+    <path name="compress-offload-playback headphones-hifi-filter">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia4" value="1" />
+    </path>
+
     <path name="compress-offload-playback headphones-dsd">
     </path>
 
@@ -883,6 +914,11 @@
 
     <path name="compress-offload-playback speaker-and-bt-sco-wb">
         <path name="compress-offload-playback bt-sco-wb" />
+        <path name="compress-offload-playback speaker" />
+    </path>
+
+    <path name="compress-offload-playback speaker-and-headphones-hifi-filter">
+        <path name="compress-offload-playback headphones-hifi-filter" />
         <path name="compress-offload-playback speaker" />
     </path>
 
@@ -950,6 +986,10 @@
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia7" value="1" />
     </path>
 
+    <path name="compress-offload-playback2 headphones-hifi-filter">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia7" value="1" />
+    </path>
+
     <path name="compress-offload-playback2 headphones-dsd">
     </path>
 
@@ -965,6 +1005,11 @@
 
     <path name="compress-offload-playback2 speaker-and-bt-sco-wb">
         <path name="compress-offload-playback2 bt-sco-wb" />
+        <path name="compress-offload-playback2 speaker" />
+    </path>
+
+    <path name="compress-offload-playback2 speaker-and-headphones-hifi-filter">
+        <path name="compress-offload-playback2 headphones-hifi-filter" />
         <path name="compress-offload-playback2 speaker" />
     </path>
 
@@ -1024,6 +1069,10 @@
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia10" value="1" />
     </path>
 
+    <path name="compress-offload-playback3 headphones-hifi-filter">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia10" value="1" />
+    </path>
+
     <path name="compress-offload-playback3 headphones-dsd">
     </path>
 
@@ -1040,6 +1089,11 @@
     <path name="compress-offload-playback3 speaker-and-bt-sco-wb">
         <path name="compress-offload-playback3 bt-sco-wb" />
         <path name="compress-offload-playback3" />
+    </path>
+
+    <path name="compress-offload-playback3 speaker-and-headphones-hifi-filter">
+        <path name="compress-offload-playback3 headphones-hifi-filter" />
+        <path name="compress-offload-playback3 speaker" />
     </path>
 
     <path name="compress-offload-playback4">
@@ -1099,6 +1153,10 @@
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia11" value="1" />
     </path>
 
+    <path name="compress-offload-playback4 headphones-hifi-filter">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia11" value="1" />
+    </path>
+
     <path name="compress-offload-playback4 headphones-dsd">
     </path>
 
@@ -1117,8 +1175,17 @@
         <path name="compress-offload-playback4" />
     </path>
 
+   <path name="compress-offload-playback4 speaker-and-headphones-hifi-filter">
+        <path name="compress-offload-playback4 headphones-hifi-filter" />
+        <path name="compress-offload-playback4 speaker" />
+    </path>
+
     <path name="compress-offload-playback5">
         <ctl name="INT4_MI2S_RX Audio Mixer MultiMedia12" value="1" />
+    </path>
+
+    <path name="compress-offload-playback5 speaker">
+	<ctl name="TERT_MI2S_RX Audio Mixer MultiMedia12" value="1" />
     </path>
 
     <path name="compress-offload-playback5 hdmi">
@@ -1173,6 +1240,10 @@
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia12" value="1" />
     </path>
 
+    <path name="compress-offload-playback5 headphones-hifi-filter">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia12" value="1" />
+    </path>
+
     <path name="compress-offload-playback5 headphones-dsd">
     </path>
 
@@ -1189,6 +1260,11 @@
     <path name="compress-offload-playback5 speaker-and-bt-sco-wb">
         <path name="compress-offload-playback5 bt-sco-wb" />
         <path name="compress-offload-playback5" />
+    </path>
+
+    <path name="compress-offload-playback5 speaker-and-headphones-hifi-filter">
+        <path name="compress-offload-playback5 headphones-hifi-filter" />
+        <path name="compress-offload-playback5 speaker" />
     </path>
 
     <path name="compress-offload-playback6">
@@ -1247,6 +1323,10 @@
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia13" value="1" />
     </path>
 
+    <path name="compress-offload-playback6 headphones-hifi-filter">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia13" value="1" />
+    </path>
+
     <path name="compress-offload-playback6 headphones-dsd">
     </path>
 
@@ -1263,6 +1343,11 @@
     <path name="compress-offload-playback6 speaker-and-bt-sco-wb">
         <path name="compress-offload-playback6 bt-sco-wb" />
         <path name="compress-offload-playback6" />
+    </path>
+
+    <path name="compress-offload-playback6 speaker-and-headphones-hifi-filter">
+        <path name="compress-offload-playback6 headphones-hifi-filter" />
+        <path name="compress-offload-playback6 speaker" />
     </path>
 
     <path name="compress-offload-playback7">
@@ -1321,6 +1406,10 @@
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia14" value="1" />
     </path>
 
+    <path name="compress-offload-playback7 headphones-hifi-filter">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia14" value="1" />
+    </path>
+
     <path name="compress-offload-playback7 headphones-dsd">
     </path>
 
@@ -1337,6 +1426,11 @@
     <path name="compress-offload-playback7 speaker-and-bt-sco-wb">
         <path name="compress-offload-playback7 bt-sco-wb" />
         <path name="compress-offload-playback7" />
+    </path>
+
+    <path name="compress-offload-playback7 speaker-and-headphones-hifi-filter">
+        <path name="compress-offload-playback7 headphones-hifi-filter" />
+        <path name="compress-offload-playback7 speaker" />
     </path>
 
     <path name="compress-offload-playback8">
@@ -1395,6 +1489,10 @@
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia15" value="1" />
     </path>
 
+    <path name="compress-offload-playback8 headphones-hifi-filter">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia15" value="1" />
+    </path>
+
     <path name="compress-offload-playback8 headphones-dsd">
     </path>
 
@@ -1406,6 +1504,11 @@
     <path name="compress-offload-playback8 speaker-and-bt-sco">
         <path name="compress-offload-playback8 bt-sco" />
         <path name="compress-offload-playback8" />
+    </path>
+
+    <path name="compress-offload-playback8 speaker-and-headphones-hifi-filter">
+        <path name="compress-offload-playback8 headphones-hifi-filter" />
+        <path name="compress-offload-playback8 speaker" />
     </path>
 
     <path name="compress-offload-playback8 speaker-and-bt-sco-wb">
@@ -1469,6 +1572,10 @@
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia16" value="1" />
     </path>
 
+    <path name="compress-offload-playback9 headphones-hifi-filter">
+        <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia16" value="1" />
+    </path>
+
     <path name="compress-offload-playback9 headphones-dsd">
     </path>
 
@@ -1485,6 +1592,11 @@
     <path name="compress-offload-playback9 speaker-and-bt-sco-wb">
         <path name="compress-offload-playback9 bt-sco-wb" />
         <path name="compress-offload-playback9" />
+    </path>
+
+    <path name="compress-offload-playback9 speaker-and-headphones-hifi-filter">
+        <path name="compress-offload-playback9 headphones-hifi-filter" />
+        <path name="compress-offload-playback9 speaker" />
     </path>
 
     <path name="audio-record">
@@ -2266,7 +2378,7 @@
     </path>
 
     <path name="speaker-and-headphones-hifi-filter">
-        <path name="headphones" />
+        <path name="headphones-hifi-filter" />
         <path name="speaker" />
     </path>
 
