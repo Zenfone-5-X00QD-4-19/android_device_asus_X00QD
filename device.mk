@@ -386,6 +386,7 @@ PRODUCT_PACKAGES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
+    fstab.zram \
     init.qcom.post_boot.sh \
     init.qti.dcvs.sh \
     init.qcom.sh
