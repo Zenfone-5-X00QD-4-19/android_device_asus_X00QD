@@ -498,4 +498,9 @@
 
      <!-- Whether the display blanks itself when transitioning from a Doze to a non Doze state -->
     <bool name="config_displayBlanksAfterDoze">false</bool>
+    
+    <!-- If not empty, sets the AVC codec profile level used for the internal screen recorder.
+         Possible values: 3, 3.1, 3.2, 4, 4.1, 4.2
+    -->
+    <string name="config_screenRecorderAVCProfileLevel" translatable="false">3.1</string>
 </resources>
