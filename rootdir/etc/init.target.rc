@@ -63,6 +63,9 @@ on boot
     chmod 0666 /dev/goodix_fp
     chown system system /dev/goodix_fp
 
+# Disable surfaceflinger prime_shader
+    setprop service.sf.prime_shader_cache 0
+
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 
@@ -119,6 +122,8 @@ service thermal-engine /system/vendor/bin/thermal-engine
 
 on property:sys.boot_completed=1
    start thermal-engine
+# Enable surfaceflinger prime_shader
+    setprop service.sf.prime_shader_cache 1
 
 service vendor.pd_mapper /system/vendor/bin/pd-mapper
      class core
