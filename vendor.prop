@@ -153,6 +153,8 @@ ro.frp.pst=/dev/block/bootdevice/by-name/frp
 debug.renderengine.backend=skiaglthreaded
 ro.hardware.egl=adreno
 ro.hardware.vulkan=adreno
+debug.hwui.use_hint_manager=true
+debug.hwui.target_cpu_time_percent=30
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
