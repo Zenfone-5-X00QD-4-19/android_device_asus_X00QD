@@ -139,6 +139,7 @@ debug.sf.enable_egl_image_tracker=1
 debug.sf.treat_170m_as_sRGB=1
 debug.sf.predict_hwc_composition_strategy=0
 ro.hwui.render_ahead=20
+debug.hwui.skia_atrace_enabled=false
 
 # DRM
 drm.service.enabled=true
