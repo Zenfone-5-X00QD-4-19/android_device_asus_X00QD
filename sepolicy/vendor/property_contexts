@@ -81,3 +81,4 @@ ro.hq.support.nfc                             u:object_r:nfc_sensors_prop:s0
 
 # Power
 vendor.powerhal.                                 u:object_r:vendor_power_prop:s0
+vendor.powerhal.init                    u:object_r:vendor_power_prop:s0
