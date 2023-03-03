@@ -76,10 +76,8 @@ on early-boot
     chmod 0664 /mnt/vendor/persist/sensors/sensors_settings
 
 on boot
-    chown system system /sys/class/power_supply/battery/charging_enabled
-    chmod 0660 /sys/class/power_supply/battery/charging_enabled
-    chown system system /sys/class/power_supply/battery/device/smartchg_stop_charging
-    chmod 0660 /sys/class/power_supply/battery/device/smartchg_stop_charging
+    chown system system /sys/class/power_supply/battery/input_suspend
+    chmod 0660 /sys/class/power_supply/battery/input_suspend
     
     chown system system /sys/devices/virtual/sensors/frgbsensor/switch
     chown system system /sys/devices/virtual/sensors/lsensor/adc
