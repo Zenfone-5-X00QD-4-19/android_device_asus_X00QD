@@ -130,6 +130,7 @@ dalvik.vm.heapminfree=512k
 dalvik.vm.heapmaxfree=8m
 
 # Display
+debug.sf.disable_backpressure=1
 debug.sf.enable_transaction_tracing=false
 debug.sf.hw=1
 debug.sf.layer_caching_active_layer_timeout_ms=1000
