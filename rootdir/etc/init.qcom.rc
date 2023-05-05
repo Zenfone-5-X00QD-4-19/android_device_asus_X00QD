@@ -431,6 +431,8 @@ service loc_launcher /system/vendor/bin/loc_launcher
     user gps
     group gps
 
+on property:persist.sys.xtra-daemon.enabled=*
+    restart loc_launcher
 
 on property:persist.sys.xtra-daemon.enabled=*
     restart vendor.loc_launcher
