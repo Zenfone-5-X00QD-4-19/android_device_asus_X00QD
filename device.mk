@@ -278,6 +278,9 @@ PRODUCT_PACKAGES += \
     libOmxVenc \
     libstagefrighthw
 
+# Opt out of 16K alignment changes
+PRODUCT_MAX_PAGE_SIZE_SUPPORTED := 4096
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
