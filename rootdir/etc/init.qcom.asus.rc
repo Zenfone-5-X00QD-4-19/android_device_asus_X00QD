@@ -27,28 +27,68 @@
 #
 #
 
+on fs
+    wait /dev/block/bootdevice/by-name/APD
+    chown root system /APD
+    chmod 0771 /APD
+    restorecon_recursive /APD
+    wait dev/block/bootdevice/by-name/asdf
+    chown root system /asdf
+    chmod 0771 /asdf
+    restorecon_recursive /asdf
+
+    chmod 0770 /vendor/factory
+    restorecon_recursive /vendor/factory
+
+    chmod 770 /mnt/vendor/persist
+    chmod 770 /mnt/vendor/persist/data
+
+    chown system system /vendor/ADF
+    chmod 0775 /vendor/ADF
+    restorecon_recursive /vendor/ADF
+
+on charger
+    chown system system /vendor/factory
+    chmod 0770 /vendor/factory
+    chown root root /vendor/asdf
+    chmod 0775 /vendor/asdf
+
 on early-boot
-     chown system system /dev/input/event3  # stk3xXx-light
-     chown system system /dev/input/event4  # stk3xXx-proximity
+    # for backward compatibility
+    chown system system /persist/sensors
+    chown system system /persist/sensors/registry
+    chown system system /persist/sensors/registry/registry
+    chown system system /persist/sensors/registry/registry/sensors_registry
+    chown system system /persist/sensors/sensors_settings
+    chown system system /persist/sensors/registry/config
+    chmod 0664 /persist/sensors/sensors_settings
+
+    chown system system /mnt/vendor/persist/sensors
+    chown system system /mnt/vendor/persist/sensors/sns.reg
+    chown system system /mnt/vendor/persist/sensors/sensors_list.txt
+    chown system system /mnt/vendor/persist/sensors/registry
+    chown system system /mnt/vendor/persist/sensors/registry/registry
+    chown system system /mnt/vendor/persist/sensors/registry/registry/sensors_registry
+    chown system system /mnt/vendor/persist/sensors/sensors_settings
+    chown system system /mnt/vendor/persist/sensors/registry/sns_reg_config
+    chown system system /mnt/vendor/persist/sensors/registry/sns_reg_version
+    chown system system /mnt/vendor/persist/sensors/registry/config
+    chmod 0664 /mnt/vendor/persist/sensors/sensors_settings
 
 on boot
     chown system system /sys/class/power_supply/battery/charging_enabled
     chmod 0660 /sys/class/power_supply/battery/charging_enabled
     chown system system /sys/class/power_supply/battery/device/smartchg_stop_charging
     chmod 0660 /sys/class/power_supply/battery/device/smartchg_stop_charging
-
-on boot
-    # Tap to wake node
-    chown system system /proc/tpd_gesture
-    chmod 0660 /proc/tpd_gesture
-
-service vendor.nfc_hal_service /vendor/bin/hw/android.hardware.nfc@1.2-service
-    override
-    class hal
-    user nfc
-    group nfc
-    task_profiles ServiceCapacityLow
-    disabled
-
-on property:ro.hq.support.nfc=1
-    enable vendor.nfc_hal_service
+    
+    chown system system /sys/devices/virtual/sensors/frgbsensor/switch
+    chown system system /sys/devices/virtual/sensors/lsensor/adc
+    chown system system /sys/devices/virtual/sensors/lsensor/cal
+    chown system system /sys/devices/virtual/sensors/lsensor/selection
+    chown system system /sys/devices/virtual/sensors/lsensor/switch
+    chown system system /sys/devices/virtual/sensors/psensor/hi_cal
+    chown system system /sys/devices/virtual/sensors/psensor/inf_cal
+    chown system system /sys/devices/virtual/sensors/psensor/low_cal
+    chown system system /sys/devices/virtual/sensors/psensor/proxm
+    chown system system /sys/devices/virtual/sensors/psensor/selection
+    chown system system /sys/devices/virtual/sensors/psensor/switch
