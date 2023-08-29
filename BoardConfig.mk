@@ -6,8 +6,6 @@
 
 DEVICE_PATH := device/asus/X00QD
 
-BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
-
 # A/B
 AB_OTA_UPDATER := false
 
