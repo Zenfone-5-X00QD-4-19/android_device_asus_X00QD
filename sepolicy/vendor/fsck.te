@@ -1,1 +1,9 @@
-allow fsck factory_block_device:blk_file rw_file_perms;
+allow fsck {
+    fac_file
+    asdf_file
+    adf_file
+    apd_file
+    system_file
+}:blk_file rw_file_perms;
+
+allow fsck fsck:capability { kill };
