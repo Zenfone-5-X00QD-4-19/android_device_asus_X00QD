@@ -8,12 +8,12 @@ get_prop(vendor_init, customize_prop)
 allow init adsprpcd_file:file mounton;
 allow vendor_init proc:file w_file_perms;
 
-dontaudit vendor_init adf_file:dir setattr;
-dontaudit vendor_init fac_file:dir setattr;
+allow vendor_init adf_file:dir setattr;
+allow vendor_init fac_file:dir setattr;
 
 allow vendor_init nfc_sensors_prop:file { read };
 allow vendor_init device:file { create write };
-
+allow vendor_init vendor_file:dir { setattr };
 set_prop(vendor_init, vendor_power_prop)
 
 # Allow vendor_init to set vendor_camera_prop
