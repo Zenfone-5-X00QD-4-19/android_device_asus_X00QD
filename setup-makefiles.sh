@@ -26,8 +26,17 @@ if [ ! -f "${HELPER}" ]; then
 fi
 source "${HELPER}"
 
-# Initialize the helper
-setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}"
+function vendor_imports() {
+    cat << EOF >> "$1"
+		"device/asus/X00QD",
+		"hardware/qcom-caf/sdm660",
+		"hardware/qcom-caf/wlan",
+		"vendor/qcom/opensource/dataservices",
+EOF
+}
+
+# Initialize the helper for common
+setup_vendor "${DEVICE_COMMON}" "${VENDOR_COMMON:-$VENDOR}" "${ANDROID_ROOT}" true
 
 # Warning headers and guards
 write_headers
