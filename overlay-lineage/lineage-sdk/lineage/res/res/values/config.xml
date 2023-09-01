@@ -19,6 +19,8 @@
         <item>com.discord</item>
         <item>org.thunderdog.challegram</item>
         <item>us.zoom.videomeetings</item>
+        <item>org.thunderdog.challegram</item>
+        <item>tw.nekomimi.nekogram</item>
      </string-array>
 
     <!-- All the capabilities of the LEDs on this device, stored as a bit field.
