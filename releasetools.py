@@ -14,24 +14,45 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import hashlib
 import common
 import re
 
-def FullOTA_Assertions(info):
-  AddModemAssertion(info)
+def FullOTA_InstallEnd(info):
+  OTA_InstallEnd(info)
   return
 
-def IncrementalOTA_Assertions(info):
-  AddModemAssertion(info)
+def IncrementalOTA_InstallEnd(info):
+  OTA_InstallEnd(info)
   return
 
-def AddModemAssertion(info):
-  android_info = info.input_zip.read("OTA/android-info.txt")
-  m = re.search(r'require\s+version-modem\s*=\s*(.+)', android_info.decode('utf-8'))
-  if m:
-    version = m.group(1).rstrip()
-    if len(version) and '*' not in version:
-      cmd = 'assert(X00Q.verify_modem("' + version + '") == "1");'
-      info.script.AppendExtra(cmd)
+def AddImageRadio(info, basename, dest):
+  name = basename
+  path = "RADIO/" + name
+  if path not in info.input_zip.namelist():
+    return
+
+  data = info.input_zip.read(path)
+  common.ZipWriteStr(info.output_zip, name, data)
+  info.script.Print("Patching {} image unconditionally...".format(dest.split('/')[-1]))
+  info.script.AppendExtra('package_extract_file("%s", "%s");' % (name, dest))
+
+def OTA_InstallEnd(info):
+  # Firmware
+  AddImageRadio(info, "mdtpsecapp.mbn", "/dev/block/bootdevice/by-name/mdtpsecapp")
+  AddImageRadio(info, "hyp.mbn", "/dev/block/bootdevice/by-name/hyp")
+  AddImageRadio(info, "pmic.elf", "/dev/block/bootdevice/by-name/pmic")
+  AddImageRadio(info, "abl.elf", "/dev/block/bootdevice/by-name/abl")
+  AddImageRadio(info, "rpm.mbn", "/dev/block/bootdevice/by-name/rpm")
+  AddImageRadio(info, "xbl.elf", "/dev/block/bootdevice/by-name/xbl")
+  AddImageRadio(info, "cmnlib64.mbn", "/dev/block/bootdevice/by-name/cmnlib64")
+  AddImageRadio(info, "cmnlib.mbnf", "/dev/block/bootdevice/by-name/cmnlib")
+  AddImageRadio(info, "devcfg.mbn", "/dev/block/bootdevice/by-name/devcfg")
+  AddImageRadio(info, "keymaster64.mbn", "/dev/block/bootdevice/by-name/keymaster")
+  AddImageRadio(info, "tz.mbn", "/dev/block/bootdevice/by-name/tz")
+  AddImageRadio(info, "BTFM.bin", "/dev/block/bootdevice/by-name/bluetooth")
+  AddImageRadio(info, "mdtp.img", "/dev/block/bootdevice/by-name/mdtp")
+  AddImageRadio(info, "dspso.bin", "/dev/block/bootdevice/by-name/dsp")
+  AddImageRadio(info, "NON-HLOS.bin", "/dev/block/bootdevice/by-name/modem")
+  AddImageRadio(info, "logfs_ufs_8mb.bin", "/dev/block/bootdevice/by-name/logfs")
+  AddImageRadio(info, "asusfw.img", "/dev/block/bootdevice/by-name/asusfw")
   return
