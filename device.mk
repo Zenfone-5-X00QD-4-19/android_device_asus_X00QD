@@ -135,6 +135,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service \
     fingerprintd
+    
+# Firmware
+$(call inherit-product, vendor/asus-firmware/Android.mk)
 
 # FM
 PRODUCT_PACKAGES += \
@@ -370,10 +373,6 @@ PRODUCT_PACKAGES += \
     android.hardware.secure_element@1.2 \
     android.hardware.secure_element@1.1.vendor \
     android.hardware.secure_element@1.2.vendor
-
-# Recovery
-PRODUCT_PACKAGES += \
-    librecovery_updater_X00QD
 
 # Ramdisk
 PRODUCT_PACKAGES += \
