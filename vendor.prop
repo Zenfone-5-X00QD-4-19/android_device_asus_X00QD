@@ -5,10 +5,11 @@ audio.offload.min.duration.secs=30
 audio.offload.video=true
 persist.vendor.audio.fluence.voicecall=true
 persist.vendor.audio.fluence.voicerec=false
-persist.vendor.audio.fluence.speaker=false
+persist.vendor.audio.fluence.speaker=true
 persist.vendor.audio.hifi.int_codec=true
 persist.vendor.audio.hw.binder.size_kbyte=1024
 persist.vendor.audio.ras.enabled=false
+persist.audio.format.24bit=true
 ro.vendor.audio.sdk.fluencetype=fluence
 ro.vendor.audio.sdk.ssr=false
 vendor.audio.dolby.ds2.enabled=false
@@ -71,7 +72,12 @@ vendor.audio.use.sw.alac.decoder=true
 vendor.audio.use.sw.ape.decoder=true
 vendor.audio.volume.headset.gain.depcal=true
 vendor.audio.tunnel.encode=false
-vendor.voice.path.for.pcm.voip=false
+vendor.voice.path.for.pcm.voip=true
+ro.audio.monitorRotation=true
+ro.asus.audio.dualSPK=true
+ro.asus.aw.settingentry=1
+ro.asus.dts.headphone.default_enable=false
+ro.asus.audiowizard.outdoor=1
 
 # Bluetooth
 bluetooth.device.class_of_device=90,2,12
@@ -102,7 +108,6 @@ ro.bluetooth.a2dp_offload.supported=true
 ro.vendor.bluetooth.wipower=false
 
 # Camera
-persist.vendor.camera.eis.enable=1
 persist.vendor.camera.expose.aux=1
 persist.vendor.camera.is_type=4
 persist.vendor.camera.mpo.disabled=1

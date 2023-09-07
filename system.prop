@@ -5,7 +5,6 @@
 # Audio
 audio.sys.noisy.broadcast.delay=600
 audio.sys.offload.pstimeout.secs=3
-persist.vendor.audio.fluence.voicecomm=true
 
 # Bluetooth
 bt.max.hfpclient.connections=1
@@ -13,6 +12,8 @@ bt.max.hfpclient.connections=1
 # Camera
 persist.vendor.camera.privapp.list=org.codeaurora.snapcam
 persist.camera.privapp.list=org.codeaurora.snapcam
+persist.vendor.camera.rtb.enable=1
+persist.vendor.camera.aec.sync=1
 
 # CNE
 persist.vendor.cne.feature=1
