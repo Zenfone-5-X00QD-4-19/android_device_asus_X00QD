@@ -56,6 +56,7 @@ audio.asus.spk_amp_cal             u:object_r:hal_audio_prop:s0
 audio.output.selected              u:object_r:hal_audio_prop:s0
 audio.mic.selected                 u:object_r:hal_audio_prop:s0
 persist.audio.format.24bit         u:object_r:hal_audio_prop:s0
+persist.audio.fluence.voicecomm    u:object_r:hal_audio_prop:s0
 
 # Sensors 
 asus.sensor.                                        u:object_r:sensors_prop:s0
@@ -71,6 +72,9 @@ gf.debug.dump_data                                  u:object_r:fingerprint_goodi
 goodix.fp.service.ready                             u:object_r:fingerprint_goodix_prop:s0
 goodix.version.                                     u:object_r:fingerprint_goodix_prop:s0
 fp.version.driver                                   u:object_r:fingerprint_goodix_prop:s0
+
+# FM
+ro.vendor.fm.use_audio_session	        u:object_r:exported_system_prop:s0
 
 # NFC
 ro.hq.support.nfc                             u:object_r:nfc_sensors_prop:s0
