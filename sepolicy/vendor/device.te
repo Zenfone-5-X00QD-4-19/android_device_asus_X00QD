@@ -1,4 +1,6 @@
-# Biometrics
-type fingerprintd_device, dev_type;
+# Block
+type asdf_block_device, dev_type;
+type asus_block_device, dev_type;
 
-type factory_block_device, dev_type;
+# Goodix
+type fingerprintd_device, dev_type;
