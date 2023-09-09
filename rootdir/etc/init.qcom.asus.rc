@@ -28,6 +28,14 @@
 #
 
 on fs
+    chown system system /asusfw
+    chown system system /asusfw/*
+    chmod 0775 /asusfw
+    chmod 0775 /asusfw/*
+
+    chown system system /asusfw/asusfw_version
+    chmod 0775 /asusfw/asusfw_version
+
     wait /dev/block/bootdevice/by-name/APD
     chown root system /APD
     chmod 0771 /APD

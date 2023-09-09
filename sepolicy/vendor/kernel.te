@@ -1,16 +1,6 @@
-allow kernel apd_file:lnk_file read;
-allow kernel apd_file:dir rw_dir_perms;
-allow kernel apd_file:file create_file_perms;
-allow kernel asdf_file:lnk_file read;
-allow kernel asdf_file:dir rw_dir_perms;
-allow kernel asdf_file:file create_file_perms;
-allow kernel block_device:dir search;
-allow kernel fac_file:dir search;
-allow kernel fac_file:file { open read };
-allow kernel kernel:capability { kill };
-allow kernel self:capability kill;
-allow kernel unlabeled:file { read open write getattr };
-dontaudit kernel mnt_vendor_file:dir { search open };
-allow kernel tmpfs:dir search;
+# Battery
+allow kernel log_file:dir search;
 
-dontaudit kernel kernel:capability { dac_override dac_read_search };
+# Factory files
+allow kernel factory_file:dir r_dir_perms;
+allow kernel factory_file:{file lnk_file} r_file_perms;
