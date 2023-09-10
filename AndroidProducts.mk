@@ -1,12 +1,12 @@
 #
-# Copyright (C) 2022 The LineageOS Project
+# Copyright (C) 2022 The derpOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_X00QD.mk
+    $(LOCAL_DIR)/derp_X00QD.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_X00QD-userdebug
+    derp_X00QD-userdebug
 

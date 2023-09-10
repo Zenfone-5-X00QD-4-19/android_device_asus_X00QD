@@ -9,21 +9,23 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk)
 
-# Inherit some common LineageOS stuff
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common DerpFest stuff.
+$(call inherit-product, vendor/derp/config/common_full_phone.mk)
 
 # Inherit from X00QD device
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
 
 # Bootanimation
 TARGET_BOOT_ANIMATION_RES := 1080
+USE_LEGACY_BOOTANIMATION := true
+TARGET_NOT_USES_BLUR := true
 
 # Device identifier. This must come after all inclusions.
 PRODUCT_BRAND := asus
 PRODUCT_DEVICE := X00QD
 PRODUCT_MANUFACTURER := asus
 PRODUCT_MODEL := Zenfone 5
-PRODUCT_NAME := lineage_X00QD
+PRODUCT_NAME := derp_X00QD
 PRODUCT_GMS_CLIENTID_BASE := android-asus
 
 TARGET_VENDOR_PRODUCT_NAME := X00QD
