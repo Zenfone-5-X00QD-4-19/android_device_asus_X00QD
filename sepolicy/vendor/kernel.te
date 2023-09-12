@@ -1,8 +1,18 @@
 # Battery
-allow kernel log_file:dir search;
+allow kernel log_file:dir { search open };
+allow kernel log_file:lnk_file read;
+allow kernel log_file:dir rw_dir_perms;
+allow kernel log_file:file create_file_perms;
+allow kernel demoapp_file:file { open read write };
+allow kernel demoapp_file:dir search;
+allow kernel block_device:dir search;
+allow kernel batterystats_file:file create_file_perms;
+allow kernel batterystats_file:file { open read write };
 
 # Factory files
 allow kernel factory_file:dir r_dir_perms;
 allow kernel factory_file:{file lnk_file} r_file_perms;
 
 allow kernel self:qipcrtr_socket create;
+
+allow kernel demoapp_file:{file lnk_file} r_file_perms;

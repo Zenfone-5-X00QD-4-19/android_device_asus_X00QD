@@ -6,6 +6,15 @@
 /xrom(/.*)?                                                                u:object_r:xrom_file:s0
 /asusfw(/.*)?                                                              u:object_r:factory_file:s0
 
+# Data
+/asdf/bat_health_binary                                                     u:object_r:batterystats_file:s0
+/asdf/bat_safety                                                            u:object_r:batterystats_file:s0
+/asdf/Batcyclecount                                                         u:object_r:batterystats_file:s0
+/asdf/Batpercentage                                                         u:object_r:batterystats_file:s0
+/asdf/GaugeMappingBackup                                                    u:object_r:batterystats_file:s0
+/APD/\.bh                                                                   u:object_r:batterystats_file:s0
+/APD/\.bs                                                                   u:object_r:batterystats_file:s0
+
 # ASUS partitions.
 /dev/block/mmcblk0p71                                                 u:object_r:asus_block_device:s0
 /dev/block/mmcblk0p72                                                 u:object_r:asus_block_device:s0

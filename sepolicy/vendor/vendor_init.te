@@ -19,3 +19,6 @@ set_prop(vendor_init, hal_audio_prop)
 
 allow vendor_init factory_file:filesystem getattr;
 allow vendor_init log_file:dir relabelto;
+
+allow vendor_init proc:file write;
+allow vendor_init demoapp_file:{file lnk_file} r_file_perms;
