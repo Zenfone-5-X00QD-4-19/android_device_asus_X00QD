@@ -9,3 +9,5 @@ allow init factory_file:filesystem { mount relabelfrom relabelto };
 allow factory_file self:filesystem associate;
 allow init block_device:blk_file write;
 allow init demoapp_file:lnk_file read;
+allow vendor_init proc_dirty:file write;
+allow init proc:file write;
