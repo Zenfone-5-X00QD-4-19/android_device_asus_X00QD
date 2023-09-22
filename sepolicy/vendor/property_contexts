@@ -74,7 +74,8 @@ goodix.version.                                     u:object_r:fingerprint_goodi
 fp.version.driver                                   u:object_r:fingerprint_goodix_prop:s0
 
 # FM
-ro.vendor.fm.                           u:object_r:vendor_fm_prop:s0
+ro.vendor.fm.                           u:object_r:vendor_fm_radio_app_prop:s0
+ro.vendor.builtin_fm_antenna_support    u:object_r:vendor_fm_radio_app_prop:s0
 
 # NFC
 ro.hq.support.nfc                             u:object_r:nfc_sensors_prop:s0
