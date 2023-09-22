@@ -5,6 +5,12 @@
 # Audio
 audio.sys.noisy.broadcast.delay=600
 audio.sys.offload.pstimeout.secs=3
+ro.audio.monitorRotation=true
+ro.asus.audio.dualSPK=true
+ro.asus.aw.settingentry=1
+ro.asus.dts.headphone.default_enable=false
+ro.asus.audiowizard.outdoor=1
+persist.vendor.audio_hal.dsp_bit_width_enforce_mode=24
 
 # Bluetooth
 bt.max.hfpclient.connections=1

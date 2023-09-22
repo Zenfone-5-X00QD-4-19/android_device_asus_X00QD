@@ -73,11 +73,6 @@ vendor.audio.use.sw.ape.decoder=true
 vendor.audio.volume.headset.gain.depcal=true
 vendor.audio.tunnel.encode=false
 vendor.voice.path.for.pcm.voip=true
-ro.audio.monitorRotation=true
-ro.asus.audio.dualSPK=true
-ro.asus.aw.settingentry=1
-ro.asus.dts.headphone.default_enable=false
-ro.asus.audiowizard.outdoor=1
 
 # Bluetooth
 bluetooth.device.class_of_device=90,2,12
