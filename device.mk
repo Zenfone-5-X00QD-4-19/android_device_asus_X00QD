@@ -284,6 +284,9 @@ PRODUCT_MAX_PAGE_SIZE_SUPPORTED := 4096
 # Disable UBWC-P on <6.1 targets
 TARGET_GRALLOC_HANDLE_HAS_NO_UBWCP := true
 
+# Disable custom content metadata region on <5.15 targets
+TARGET_GRALLOC_HANDLE_HAS_NO_CUSTOM_CONTENT_MD_RESERVED_SIZE := true
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
