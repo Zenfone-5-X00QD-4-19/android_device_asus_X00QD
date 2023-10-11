@@ -2135,6 +2135,12 @@ vendor/lib64/vendor.display.color@1.1.so|3cf0d256372bd418462326e6067b4e121322619
 vendor/lib64/vendor.display.color@1.2.so|8184e5d3e404864b1a1518b4d4e2012a5839660b
 vendor/lib64/vendor.display.postproc@1.0.so|86ef4e868f7abb95d555a4d086a8c4193920803f
 
+# Protobuf - from sweet - V14.0.4.0.THGMIXM
+vendor/lib/libprotobuf-cpp-full-3.9.1.so
+vendor/lib/libprotobuf-cpp-lite-3.9.1.so
+vendor/lib64/libprotobuf-cpp-full-3.9.1.so
+vendor/lib64/libprotobuf-cpp-lite-3.9.1.so
+
 # QCC - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
 vendor/bin/hw/vendor.qti.hardware.qccvndhal@1.0-service|b60b09fa92e8b400129c021c6b51c0c63dbf1edd
 vendor/etc/init/vendor.qti.hardware.qccvndhal@1.0-service.rc|afeb332a4750a11587658fcc9a75a27f63bbccdd
