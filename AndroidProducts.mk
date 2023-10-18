@@ -5,8 +5,8 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/tequila_X00QD.mk
+    $(LOCAL_DIR)/derp_X00QD.mk
 
 COMMON_LUNCH_CHOICES := \
-    tequila_X00QD-userdebug
+    derp_X00QD-userdebug
 
