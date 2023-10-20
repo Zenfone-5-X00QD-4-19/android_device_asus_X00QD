@@ -76,6 +76,15 @@ vendor.audio.volume.headset.gain.depcal=true
 vendor.audio.tunnel.encode=false
 vendor.voice.path.for.pcm.voip=false
 
+# ACDB
+persist.vendor.audio.calfile0=/vendor/etc/acdbdata/ZE620KL_Bluetooth_cal.acdb
+persist.vendor.audio.calfile1=/vendor/etc/acdbdata/ZE620KL_General_cal.acdb
+persist.vendor.audio.calfile2=/vendor/etc/acdbdata/ZE620KL_Global_cal.acdb
+persist.vendor.audio.calfile3=/vendor/etc/acdbdata/ZE620KL_Handset_cal.acdb
+persist.vendor.audio.calfile4=/vendor/etc/acdbdata/ZE620KL_Hdmi_cal.acdb
+persist.vendor.audio.calfile5=/vendor/etc/acdbdata/ZE620KL_Headset_cal.acdb
+persist.vendor.audio.calfile6=/vendor/etc/acdbdata/ZE620KL_Speaker_cal.acdb
+
 # Bluetooth
 bluetooth.device.class_of_device=90,2,12
 bluetooth.hci.erroneous_data_reporting.enabled=false
