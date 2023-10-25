@@ -202,5 +202,8 @@ ro.surface_flinger.vsync_sf_event_phase_offset_ns=6000000
 # UBWC
 vendor.video.disable.ubwc=1
 
+# USB
+ro.usb.firstboot.config=diag,serial_cdev,rmnet,adb
+
 # Zygote
 zygote.critical_window.minute=10
