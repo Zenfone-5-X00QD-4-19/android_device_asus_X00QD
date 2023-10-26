@@ -138,15 +138,6 @@ PRODUCT_PACKAGES += \
 # Firmware
 $(call inherit-product, vendor/asus-firmware/Android.mk)
 
-# FM
-PRODUCT_PACKAGES += \
-    android.hardware.broadcastradio@1.0-impl
-
-PRODUCT_PACKAGES += \
-    libqcomfm_jni \
-    qcom.fmradio \
-    qcom.fmradio.xml
-
 # Gatekeeper
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0.vendor
