@@ -130,6 +130,7 @@ dalvik.vm.heapminfree=512k
 dalvik.vm.heapmaxfree=8m
 
 # Display
+debug.sf.enable_egl_image_tracker=1
 debug.sf.disable_backpressure=1
 debug.sf.enable_transaction_tracing=false
 debug.sf.hw=1
