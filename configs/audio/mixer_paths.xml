@@ -315,7 +315,7 @@
     <ctl name="ADC1 Volume" value="4" />
     <ctl name="ADC2 Volume" value="4" />
     <ctl name="ADC3 Volume" value="4" />
-    <ctl name="DEC1 Volume" value="95" />
+    <ctl name="DEC1 Volume" value="100" />
     <ctl name="DEC2 Volume" value="84" />
     <ctl name="DEC3 Volume" value="84" />
     <ctl name="DEC4 Volume" value="84" />
@@ -1934,7 +1934,7 @@
 
     <!-- These are actual sound device specific mixer settings -->
     <path name="adc1">
-        <ctl name="ADC1 Volume" value="6" />
+        <ctl name="ADC1 Volume" value="9" />
         <ctl name="DEC1 MUX" value="ADC1" />
         <ctl name="ADC1_INP1 Switch" value="1" />
     </path>
@@ -2343,23 +2343,11 @@
     </path>
 
     <path name="camcorder-mic">
-        <ctl name="DEC2 MUX" value="ADC1" />
-        <ctl name="ADC1_INP1 Switch" value="1" />
-        <ctl name="DEC1 MUX" value="ADC2" />
-        <ctl name="ADC2 MUX" value="INP3" />
-        <ctl name="ADC1 Volume" value="4" />
-        <ctl name="ADC3 Volume" value="4" />
-        <ctl name="INT3_MI2S_TX Channels" value="Two" />
+        <path name="handset-mic" />
     </path>
 
     <path name="camcorder-mic-inverse">
-        <ctl name="DEC1 MUX" value="ADC1" />
-        <ctl name="ADC1_INP1 Switch" value="1" />
-        <ctl name="DEC2 MUX" value="ADC2" />
-        <ctl name="ADC2 MUX" value="INP3" />
-        <ctl name="ADC1 Volume" value="4" />
-        <ctl name="ADC3 Volume" value="4" />
-        <ctl name="INT3_MI2S_TX Channels" value="Two" />
+        <path name="handset-mic" />
     </path>
 
     <path name="hdmi-tx">
