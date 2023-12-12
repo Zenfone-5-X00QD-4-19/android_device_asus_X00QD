@@ -10,7 +10,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk)
 
 # Inherit some common DerpFest stuff
-$(call inherit-product, vendor/derp/config/common_full_phone.mk)
+$(call inherit-product, vendor/evolution/config/common_full_phone.mk)
 TARGET_NOT_USES_BLUR := true
 TARGET_FACE_UNLOCK_SUPPORTED := true
 
@@ -25,7 +25,7 @@ PRODUCT_BRAND := asus
 PRODUCT_DEVICE := X00QD
 PRODUCT_MANUFACTURER := asus
 PRODUCT_MODEL := Zenfone 5
-PRODUCT_NAME := derp_X00QD
+PRODUCT_NAME := evolution_X00QD
 PRODUCT_GMS_CLIENTID_BASE := android-asus
 
 TARGET_VENDOR_PRODUCT_NAME := X00QD
