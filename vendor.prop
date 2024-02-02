@@ -3,8 +3,6 @@ af.fast_track_multiplier=1
 audio.deep_buffer.media=true
 audio.offload.min.duration.secs=30
 audio.offload.video=true
-audio.sys.noisy.broadcast.delay=600
-audio.sys.offload.pstimeout.secs=3
 persist.vendor.audio.fluence.voicecall=true
 persist.vendor.audio.fluence.voicecomm=true
 persist.vendor.audio.fluence.voicerec=false
@@ -78,7 +76,6 @@ vendor.voice.path.for.pcm.voip=false
 
 # Bluetooth
 bluetooth.device.class_of_device=90,2,12
-bluetooth.hci.erroneous_data_reporting.enabled=false
 bluetooth.hardware.power.operating_voltage_mv=3300
 bluetooth.profile.a2dp.source.enabled?=true
 bluetooth.profile.asha.central.enabled?=true
@@ -95,7 +92,6 @@ bluetooth.profile.pan.panu.enabled?=true
 bluetooth.profile.pbap.server.enabled?=true
 bluetooth.profile.sap.server.enabled?=true
 persist.vendor.bt.aac_frm_ctl.enabled=true
-persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxhd-aac
 persist.vendor.qcom.bluetooth.a2dp_offload_cap=sbc-aptx-aptxhd-aac-ldac
 persist.vendor.qcom.bluetooth.aac_frm_ctl.enabled
 persist.vendor.qcom.bluetooth.enable.splita2dp=true
@@ -137,7 +133,6 @@ debug.sf.hw=1
 debug.sf.layer_caching_active_layer_timeout_ms=1000
 debug.sf.recomputecrop=0
 debug.sf.disable_client_composition_cache=1
-persist.hwc.mdpcomp.enable=true
 debug.sf.predict_hwc_composition_strategy=0
 debug.sf.treat_170m_as_sRGB=1
 debug.hwui.use_hint_manager=true
@@ -150,16 +145,10 @@ vendor.display.disable_scaler=1
 drm.service.enabled=true
 
 # FM
-vendor.hw.fm.init=0
 vendor.fm.a2dp.conc.disabled=false
 
 # FRP
 ro.frp.pst=/dev/block/bootdevice/by-name/frp
-
-# GMS
-ro.com.google.clientidbase.ms=android-asus-tpin
-ro.com.google.rlzbrandcode=ASUP
-ro.com.google.rlz_ap_whitelist=y0,y5,y6,y7,y9
 
 # Graphics
 debug.hwui.renderer=vulkan
@@ -170,15 +159,11 @@ ro.hardware.vulkan=adreno
 # HEH filename encryption is being dropped
 ro.crypto.volume.filenames_mode=aes-256-cts
 
-# NTP Server
-persist.backup.ntpServer=0.pool.ntp.org
-
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
 ro.vendor.perf.scroll_opt=true
 
 # Radio - IMS
-persist.dbg.ims_volte_enable=1
 persist.dbg.volte_avail_ovr=1
 persist.dbg.vt_avail_ovr=1
 persist.dbg.wfc_avail_ovr=1

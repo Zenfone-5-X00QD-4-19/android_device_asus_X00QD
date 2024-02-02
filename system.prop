@@ -2,8 +2,14 @@
 # system.prop for sdm660
 #
 
+# Audio
+audio.sys.noisy.broadcast.delay=600
+audio.sys.offload.pstimeout.secs=3
+
 # Bluetooth
 bt.max.hfpclient.connections=1
+bluetooth.hci.erroneous_data_reporting.enabled=false
+persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxhd-aac
 
 # Camera
 persist.vendor.camera.privapp.list=org.codeaurora.snapcam
@@ -29,8 +35,19 @@ vendor.display.enable_default_color_mode=1
 vendor.gralloc.enable_fb_ubwc=1
 vendor.display.disable_skip_validate=1
 
+# FM
+vendor.hw.fm.init=0
+
+# GMS
+ro.com.google.clientidbase.ms=android-asus-tpin
+ro.com.google.rlzbrandcode=ASUP
+ro.com.google.rlz_ap_whitelist=y0,y5,y6,y7,y9
+
 # GPS
 persist.vendor.overlay.izat.optin=rro
+
+# NTP Server
+persist.backup.ntpServer=0.pool.ntp.org
 
 # Graphics
 debug.hwui.skia_atrace_enabled=false
@@ -38,6 +55,7 @@ debug.sf.auto_latch_unsignaled=true
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 sdm.debug.disable_skip_validate=1
+persist.hwc.mdpcomp.enable=true
 
 # Media
 media.settings.xml=/vendor/etc/media_profiles_vendor.xml
@@ -59,6 +77,9 @@ persist.backup.ntpServer="0.pool.ntp.org"
 # QC framework value-adds
 ro.vendor.qti.va_aosp.support=1
 
+# Radio
+persist.dbg.ims_volte_enable=1
+
 # RIL
 DEVICE_PROVISIONED=1
 persist.radio.VT_CAM_INTERFACE=2
@@ -74,3 +95,12 @@ persist.timed.enable=true
 # WiFi Display
 persist.debug.wfd.enable=1
 persist.sys.wfd.virtual=0
+
+# USB
+ro.usb.firstboot.config=diag,serial_cdev,rmnet,adb
+
+# USB debugging at boot
+persist.sys.usb.config=mtp,adb
+ro.adb.secure=0
+ro.secure=0
+ro.debuggable=1
