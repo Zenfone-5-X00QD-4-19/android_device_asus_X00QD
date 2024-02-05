@@ -117,14 +117,6 @@ debug.stagefright.omx_default_rank=0
 # Dalvik dex2oat
 dalvik.vm.dex2oat64.enabled=true
 
-# Dalvik overrides
-dalvik.vm.heapgrowthlimit=256m
-dalvik.vm.heapstartsize=8m
-dalvik.vm.heapsize=512m
-dalvik.vm.heaptargetutilization=0.75
-dalvik.vm.heapminfree=512k
-dalvik.vm.heapmaxfree=8m
-
 # Display
 debug.sf.enable_egl_image_tracker=1
 debug.sf.disable_backpressure=1
