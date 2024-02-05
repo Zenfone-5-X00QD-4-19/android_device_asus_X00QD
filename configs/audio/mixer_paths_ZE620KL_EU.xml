@@ -167,6 +167,7 @@
     <ctl name="AIF1_VI_SDW Mixer SPKR_VI_1" value="0" />
     <ctl name="AIF1_VI_SDW Mixer SPKR_VI_2" value="0" />
     <ctl name="INT5 MI2S VI MONO" value="Left" />
+    <ctl name="TERT_MI2S_RX Format" value="S24_LE" />
     <!-- HFP start -->
     <ctl name="HFP_SLIM7_UL_HL Switch" value="0" />
     <ctl name="INT4_MI2S_RX Port Mixer SLIM_7_TX" value="0" />
@@ -311,9 +312,9 @@
     <ctl name="RX3 Digital Volume" value="88" />
     <ctl name="RX4 Digital Volume" value="88" />
     <ctl name="RX5 Digital Volume" value="88" />
-    <ctl name="ADC1 Volume" value="4" />
-    <ctl name="ADC2 Volume" value="4" />
-    <ctl name="ADC3 Volume" value="4" />
+    <ctl name="ADC1 Volume" value="6" />
+    <ctl name="ADC2 Volume" value="6" />
+    <ctl name="ADC3 Volume" value="6" />
     <ctl name="DEC1 Volume" value="100" />
     <ctl name="DEC2 Volume" value="84" />
     <ctl name="DEC3 Volume" value="84" />
@@ -2237,8 +2238,6 @@
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RX2 MIX1 INP1" value="RX2" />
         <ctl name="RDAC2 MUX" value="RX2" />
-        <ctl name="RX1 Digital Volume" value="73" />
-        <ctl name="RX2 Digital Volume" value="73" />
         <ctl name="HPHL" value="Switch" />
         <ctl name="HPHR" value="Switch" />
     </path>
@@ -2255,20 +2254,13 @@
     </path>
 
     <path name="headphones-high-imp">
-        <ctl name="INT0_MI2S_RX Channels" value="Two" />
-        <ctl name="RX1 MIX1 INP1" value="RX1" />
-        <ctl name="RX2 MIX1 INP1" value="RX2" />
-        <ctl name="RDAC2 MUX" value="RX2" />
-        <ctl name="RX1 Digital Volume" value="84" />
-        <ctl name="RX2 Digital Volume" value="84" />
-        <ctl name="HPHL" value="Switch" />
-        <ctl name="HPHR" value="Switch" />
+        <path name="headphones" />
     </path> 
 
     <path name="headphones-mono">
         <ctl name="INT0_MI2S_RX Channels" value="One" />
         <ctl name="RX1 MIX1 INP1" value="RX1" />
-        <ctl name="RX1 Digital Volume" value="73" />
+        <ctl name="RX1 Digital Volume" value="84" />
         <ctl name="HPHL" value="Switch" />
         <ctl name="HPHR" value="Zero" />
     </path>

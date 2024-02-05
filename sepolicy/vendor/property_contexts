@@ -33,8 +33,6 @@ sys.asus.                                           u:object_r:customize_prop:s0
 touch.version.driver                                u:object_r:customize_prop:s0
 wifi.version.driver                                 u:object_r:customize_prop:s0
 
-
-
 # Camera
 persist.vendor.camera.hdring                  u:object_r:vendor_camera_prop:s0
 persist.vendor.camera.pickres.prop_hdr        u:object_r:vendor_camera_prop:s0
