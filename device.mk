@@ -104,7 +104,6 @@ PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
 PRODUCT_PACKAGES += \
     gralloc.sdm660 \
     hwcomposer.sdm660 \
-    memtrack.sdm660 \
     libdisplayconfig \
     libgralloc.qti \
     libtinyxml \
