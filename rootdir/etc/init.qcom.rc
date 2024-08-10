@@ -381,6 +381,12 @@ on property:sys.boot_completed=1
     # to hide Magisk & co.
     chmod 440 /proc/net/unix
 
+# Reset Leds (on boot)
+    write /sys/class/leds/green/brightness 1
+    write /sys/class/leds/green/brightness 0
+    write /sys/class/leds/red/brightness 1
+    write /sys/class/leds/red/brightness 0
+
 # corefile limit
 on property:persist.debug.trace=1
     mkdir /data/core 0777 root root
