@@ -44,6 +44,9 @@ function lib_to_package_fixup_vendor_variants() {
         vendor.qti.hardware.fm@1.0)
             echo "$1-vendor"
             ;;
+        libOmxCore | \
+            libril | \
+            libwpa_client) ;;
         *)
             return 1
             ;;
