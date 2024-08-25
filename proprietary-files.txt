@@ -1812,12 +1812,14 @@ vendor/etc/cne/wqeclient/VZW/VZW_profile5.xml|f76c894f3c6d5b6ed35113a088dc3174c9
 vendor/etc/cne/wqeclient/VZW/VZW_profile6.xml|14d136e7fcc682311757d3edc0b9d3eaeba11815
 vendor/etc/default-permissions/com.qualcomm.qti.cne.xml|c63c37d067e3009735fbc54d4603d43d7d6623e1
 vendor/etc/init/cnd.rc|3a5183df3479500fb729493bc56c71166fc10bce
-vendor/lib64/libcne.so|646dbdf7f6990fb149fb9574f11792375ba1f64e
+# libcne depends on libwpa_client, which is a gnu makefile target
+vendor/lib64/libcne.so;DISABLE_CHECKELF|646dbdf7f6990fb149fb9574f11792375ba1f64e
 vendor/lib64/libcneapiclient.so|b6479678e5b0e8b46d8df5eb8bd610aa17be00d0
 vendor/lib64/libcneoplookup.so|60d6abe85061de4fa75e5e4f69d477f37f1f8f64
 vendor/lib64/libcneqmiutils.so|c2e2658698eb8b312ca6b28c1a1088a331bb28b9
 vendor/lib64/libwms.so|dec22344895622ed1526e6c8cbb66c96e71e8f69
-vendor/lib64/libwqe.so|212fae71ae5ae83f2d2c92297990e1b725a7e926
+# libwqe depends on libwpa_client, which is a gnu makefile target
+vendor/lib64/libwqe.so;DISABLE_CHECKELF|212fae71ae5ae83f2d2c92297990e1b725a7e926
 vendor/lib64/libxml.so|11c11c2fb6b713855532a3709f78935f8c98a766
 vendor/lib64/vendor.qti.data.factory@2.0.so|748bfbaa57a409b8962e2b1725e1415e423a7315
 vendor/lib64/vendor.qti.data.factory@2.1.so|bb1f3fa22563282ee24bf03ca681fdc45551feef
@@ -1944,7 +1946,8 @@ vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so
 # GPS - from SLD_sprout 11-RKQ1.210607.001-00WW_3_490-release-keys
 vendor/bin/garden_app|33936daa11e37a2e9d7cc8a6029c043bdf2a8bd5
 vendor/bin/loc_launcher|f170dc02d9046fcde1fc58656b0387773a85e78d
-vendor/bin/lowi-server|6c66e4c543d67af692ff7c78f12fc90cc4bd0bcd
+# lowi-server depends on libwpa_client, which is a gnu makefile target
+vendor/bin/lowi-server;DISABLE_CHECKELF|6c66e4c543d67af692ff7c78f12fc90cc4bd0bcd
 vendor/bin/mlid|a36c293c13e1929f8943ac8518e27065c0f51ae3
 vendor/bin/slim_daemon|8b83f55aace84b0519d73a16c64ed38152cc7805
 vendor/bin/xtra-daemon|cd0305e252493d65780b5ff188f937f84c64675a
@@ -2088,7 +2091,8 @@ vendor/lib/libAlacSwDec.so|3a6d7dae2808dbe111ff4449b4e1e82560466ef3
 vendor/lib/libApeSwDec.so|ff14ad2ebbabcd89278830d817e9aa6bdcb1799a
 vendor/lib/libdsd2pcm.so|f9d2f26315764c27137bc375bb85b20fabe66ff9
 vendor/lib/libFlacSwDec.so|707dbc6b5d2890dc3bba22c00b372f0973baebda
-vendor/lib/libOmxVideoDSMode.so|84c632ef31c4dd88c5e08f92ba02e3f29df09b35
+# libOmxVideoDSMode depends on libOmxCore, which is a gnu makefile target
+vendor/lib/libOmxVideoDSMode.so;DISABLE_CHECKELF|84c632ef31c4dd88c5e08f92ba02e3f29df09b35
 
 # NFC - from UL-ASUS_X00QD-ASUS-AOSP-17.0615.2005.25-1.1.1-user
 vendor/lib/hw/nfc_nci.nqx.default.so
@@ -2226,7 +2230,8 @@ vendor/lib64/libril-qc-hal-qmi.so|73cb43f5628dd2536d6c3a3a0ec047225fcbe4cc
 vendor/lib64/libril-qc-logger.so|5622a5aa1eb7fc6c6241c0033e27272084d235c6
 vendor/lib64/libril-qc-ltedirectdisc.so|b3990ccf919b742b9a756654bfaf9d23682ff1db
 vendor/lib64/libril-qc-radioconfig.so|3d5f05676715998eecb3f19642f24d867e4e5f6a
-vendor/lib64/libril-qcril-hook-oem.so|1536b0a3bccdc1dcc06512248c14238a3405aaeb
+# libril-qcril-hook-oem depends on libril, which is a gnu makefile target
+vendor/lib64/libril-qcril-hook-oem.so;DISABLE_CHECKELF|1536b0a3bccdc1dcc06512248c14238a3405aaeb
 vendor/lib64/librilqmiservices.so|0e9b4d4f71e2d3d9e2375bff210765ef5a741c70
 vendor/lib64/libsettings.so|9d8b1850e0dc0452b1b96e77045adab2f13270b2
 vendor/lib64/libsystem_health_mon.so|2cc55d78ea00b9fe8af9cd88fd8ef8c31ee5f494
@@ -2302,7 +2307,8 @@ system_ext/lib64/vendor.qti.ims.rcsconfig@1.0.so|4b56c07ee1d30a63e96918257079bcb
 system_ext/lib64/vendor.qti.imsrtpservice@3.0.so|4cf9e97f526c6278c5e2136e00d1fb800fb941aa
 system_ext/priv-app/ims/ims.apk|91c8e9b96882063769ef0a27ac9ea2627e8a8436
 vendor/bin/ims_rtp_daemon|fbec6a715d54e31c3833799386f8954b1b83b1d1
-vendor/bin/imsdatadaemon|36738383eb8e711adf94f1bc09dee50b78c747f6
+# imsdatadaemon depends on libwpa_client, which is a gnu makefile target
+vendor/bin/imsdatadaemon;DISABLE_CHECKELF|36738383eb8e711adf94f1bc09dee50b78c747f6
 vendor/bin/imsqmidaemon|5fde955e71392479b2f3e6aaf6005fa54b618678
 vendor/bin/imsrcsd|bf29aac14856f29268c01599e5f6c7c6ae520685
 vendor/etc/init/ims_rtp_daemon_legacy.rc|104b2a879db4d3dd44e74a3d7f6e69f6972c9129
