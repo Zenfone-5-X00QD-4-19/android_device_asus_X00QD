@@ -4,3 +4,4 @@ type asus_block_device, dev_type;
 
 # Goodix
 type fingerprintd_device, dev_type;
+type latency_device, dev_type;

@@ -24,6 +24,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     audio_amplifier.sdm660 \
     audio.bluetooth.default \
+    audio.primary.sdm660 \
     audio.primary.default \
     audio.r_submix.default \
     audio.usb.default \
@@ -48,7 +49,9 @@ PRODUCT_COPY_FILES += \
     device/asus/X00QD/configs/audio/audio_platform_info_intcodec.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
 
 PRODUCT_COPY_FILES += \
+    frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
     frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
 
 # ANT+
@@ -236,11 +239,18 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media/media_profiles_vendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_vendor.xml
 
 PRODUCT_PACKAGES += \
+    libmediaplayerservice
+
+# Media C2
+PRODUCT_PACKAGES += \
+    android.hardware.media.c2@1.2.vendor \
     libcodec2_hidl@1.2.vendor \
     libcodec2_soft_common.vendor \
     libcodec2_vndk.vendor \
     libgui_vendor \
-    libsfplugin_ccodec_utils.vendor \
+    libsfplugin_ccodec_utils.vendor
+
+PRODUCT_PACKAGES += \
     libcodec2_soft_aacdec \
     libcodec2_soft_aacenc \
     libcodec2_soft_amrnbdec \
@@ -272,8 +282,7 @@ PRODUCT_PACKAGES += \
     libcodec2_soft_vp8dec \
     libcodec2_soft_vp8enc \
     libcodec2_soft_vp9dec \
-    libcodec2_soft_vp9enc \
-    libcodec2_soft_xaacdec
+    libcodec2_soft_vp9enc
 
 # Network
 PRODUCT_PACKAGES += \
@@ -301,13 +310,33 @@ PRODUCT_PACKAGES += \
 
 # OMX
 PRODUCT_PACKAGES += \
+    android.hardware.media.omx@1.0.vendor \
+    android.hardware.media.omx@1.0-service \
     libc2dcolorconvert \
+    libhypv_intercept \
+    libmedia_omx.vendor \
     libmm-omxcore \
     libOmxCore \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libOmxEvrcEnc \
+    libOmxG711Enc \
+    libOmxQcelp13Enc \
     libOmxVdec \
     libOmxVenc \
-    libstagefrighthw \
-    android.hardware.media.c2@1.0.vendor
+    libOmxVidcCommon \
+    libstagefright_amrnb_common.vendor \
+    libstagefright_bufferpool@2.0.1.vendor \
+    libstagefright_bufferqueue_helper.vendor \
+    libstagefright_enc_common.vendor \
+    libstagefright_flacdec.vendor \
+    libstagefright_foundation.vendor \
+    libstagefright_omx.vendor \
+    libstagefright_omx_utils.vendor \
+    libstagefright_softomx.vendor \
+    libstagefright_softomx_plugin.vendor \
+    libstagefright_xmlparser.vendor \
+    libstagefrighthw
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -356,11 +385,14 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service.lineage-libperfmgr
+    android.hardware.power@1.3.vendor \
+    android.hardware.power-service.lineage-libperfmgr \
+    libpower.vendor \
+    libqti-perfd-client
 
 # Powerhint
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/power-libperfmgr/sdm636_powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
+    $(LOCAL_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
 # Public Libraries
 PRODUCT_COPY_FILES += \
@@ -373,6 +405,8 @@ PRODUCT_COPY_FILES += \
 
 # QMI
 PRODUCT_PACKAGES += \
+    libcrypto_utils.vendor \
+    libjsoncpp.vendor \
     libjson \
     libqti_vndfwk_detect.vendor \
     libvndfwk_detect_jni.qti \
@@ -396,7 +430,10 @@ PRODUCT_PACKAGES += \
     android.hardware.secure_element@1.1 \
     android.hardware.secure_element@1.2 \
     android.hardware.secure_element@1.1.vendor \
-    android.hardware.secure_element@1.2.vendor
+    android.hardware.secure_element@1.2.vendor \
+    librmnetctl \
+    libsqlite.vendor:64 \
+    libsysutils.vendor
 
 # Ramdisk
 PRODUCT_PACKAGES += \
