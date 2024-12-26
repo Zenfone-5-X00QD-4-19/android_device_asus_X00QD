@@ -49,8 +49,6 @@
     <!-- Wifi driver supports Automatic channel selection (ACS) for softap -->
     <bool translatable="false" name="config_wifi_softap_acs_supported">true</bool>
 
-    <!-- Wifi driver supports IEEE80211AC for softap -->
-    <bool translatable="false" name="config_wifi_softap_ieee80211ac_supported">true</bool>
 
     <!-- Indicates that connected MAC randomization is supported on this device -->
     <bool name="config_wifi_connected_mac_randomization_supported">true</bool>
