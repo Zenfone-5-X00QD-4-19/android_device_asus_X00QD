@@ -61,6 +61,9 @@ PRODUCT_PACKAGES += \
     AntHalService-Soong \
     com.dsi.ant@1.0.vendor
 
+# Boot animation
+TARGET_BOOTANIMATION_HALF_RES := true
+
 # Bluetooth
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio-impl \
@@ -190,6 +193,7 @@ PRODUCT_PACKAGES += \
 
 # HIDL
 PRODUCT_PACKAGES += \
+    android.hidl.base@1.0 \
     libhidltransport \
     libhidltransport.vendor \
     libhwbinder \
@@ -520,12 +524,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-full-vendorcompat \
     libprotobuf-cpp-lite-vendorcompat
-
-# VR
-PRODUCT_PACKAGES += \
-    android.hardware.vr@1.0-impl \
-    android.hardware.vr@1.0-service \
-    vr.sdm660
 
 # VNDK
 PRODUCT_COPY_FILES += \
