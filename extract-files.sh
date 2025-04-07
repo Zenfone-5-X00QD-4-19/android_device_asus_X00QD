@@ -65,6 +65,10 @@ function blob_fixup() {
     system/lib64/libfm-hci.so | system/lib64/libwfdnative.so | system/lib/libfm-hci.so | system/lib/libwfdnative.so)
         "${PATCHELF}" --remove-needed "android.hidl.base@1.0.so" "${2}"
         ;;
+    # fingerprint: use libhidlbase-v32 for goodix
+    vendor/lib64/libvendor.goodix.hardware.fingerprintextension@1.0.so)
+        grep -q "libhidlbase-v32.so" "${2}" || "${PATCHELF}" --replace-needed "libhidlbase.so" "libhidlbase-v32.so" "${2}"
+        ;;
     esac
 }
 
