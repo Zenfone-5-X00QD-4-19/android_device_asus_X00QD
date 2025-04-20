@@ -115,8 +115,6 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.1-service \
     android.hardware.graphics.mapper@3.0-impl-qti-display \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
-    android.hardware.memtrack@1.0-impl \
-    android.hardware.memtrack@1.0-service \
     android.frameworks.displayservice@1.0 \
     android.frameworks.displayservice@1.0.vendor \
     vendor.display.config@1.0 \
@@ -125,7 +123,8 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.allocator-service \
     vendor.qti.hardware.display.mapper@1.0.vendor \
     vendor.qti.hardware.display.mapper@1.1.vendor \
-    vendor.qti.hardware.display.mapper@2.0.vendor
+    vendor.qti.hardware.display.mapper@2.0.vendor \
+    vendor.qti.hardware.memtrack-service
 
 # Doze mode
 PRODUCT_PACKAGES += \
@@ -133,9 +132,12 @@ PRODUCT_PACKAGES += \
 
 # DRM
 PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0.vendor \
+    android.hardware.drm@1.1.vendor \
+    android.hardware.drm@1.2.vendor \
     android.hardware.drm@1.3.vendor \
-    android.hardware.drm@1.4.vendor \
-    android.hardware.drm-service.clearkey
+    android.hardware.drm-service.clearkey \
+    libcrypto_shim.vendor
 
 # Fingerprint
 PRODUCT_PACKAGES += \
@@ -158,8 +160,7 @@ PRODUCT_PACKAGES += \
 
 # Gatekeeper
 PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0.vendor \
-    libion.vendor
+    android.hardware.gatekeeper@1.0.vendor
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -167,7 +168,6 @@ PRODUCT_PACKAGES += \
     android.hardware.gnss@2.1-service-qti \
     android.hardware.gnss@1.1.vendor \
     android.hardware.gnss@2.1.vendor \
-    libhidlmemory.vendor \
     libbatching \
     libgeofencing \
     libgnss \
@@ -244,51 +244,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml \
     $(LOCAL_PATH)/configs/media/media_profiles_vendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_vendor.xml
 
-PRODUCT_PACKAGES += \
-    libmediaplayerservice
-
-# Media C2
-PRODUCT_PACKAGES += \
-    android.hardware.media.c2@1.2.vendor \
-    libcodec2_hidl@1.2.vendor \
-    libcodec2_soft_common.vendor \
-    libcodec2_vndk.vendor \
-    libgui_vendor \
-    libsfplugin_ccodec_utils.vendor
-
-PRODUCT_PACKAGES += \
-    libcodec2_soft_aacdec \
-    libcodec2_soft_aacenc \
-    libcodec2_soft_amrnbdec \
-    libcodec2_soft_amrwbdec \
-    libcodec2_soft_amrnbenc \
-    libcodec2_soft_amrwbenc \
-    libcodec2_soft_av1dec_aom \
-    libcodec2_soft_av1dec_gav1 \
-    libcodec2_soft_avcdec \
-    libcodec2_soft_avcenc \
-    libcodec2_soft_common \
-    libcodec2_soft_flacdec \
-    libcodec2_soft_flacenc \
-    libcodec2_soft_g711alawdec \
-    libcodec2_soft_g711mlawdec \
-    libcodec2_soft_gsmdec \
-    libcodec2_soft_h263dec \
-    libcodec2_soft_h263enc \
-    libcodec2_soft_hevcdec \
-    libcodec2_soft_hevcenc \
-    libcodec2_soft_mp3dec \
-    libcodec2_soft_mpeg2dec \
-    libcodec2_soft_mpeg4dec \
-    libcodec2_soft_mpeg4enc \
-    libcodec2_soft_opusdec \
-    libcodec2_soft_opusenc \
-    libcodec2_soft_rawdec \
-    libcodec2_soft_vorbisdec \
-    libcodec2_soft_vp8dec \
-    libcodec2_soft_vp8enc \
-    libcodec2_soft_vp9dec \
-    libcodec2_soft_vp9enc
+PRODUCT_COPY_FILES += \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml
 
 # Network
 PRODUCT_PACKAGES += \
@@ -318,32 +277,11 @@ PRODUCT_PACKAGES += \
 
 # OMX
 PRODUCT_PACKAGES += \
-    android.hardware.media.omx@1.0.vendor \
-    android.hardware.media.omx@1.0-service \
     libc2dcolorconvert \
-    libhypv_intercept \
-    libmedia_omx.vendor \
     libmm-omxcore \
     libOmxCore \
-    libOmxAacEnc \
-    libOmxAmrEnc \
-    libOmxEvrcEnc \
-    libOmxG711Enc \
-    libOmxQcelp13Enc \
     libOmxVdec \
     libOmxVenc \
-    libOmxVidcCommon \
-    libstagefright_amrnb_common.vendor \
-    libstagefright_bufferpool@2.0.1.vendor \
-    libstagefright_bufferqueue_helper.vendor \
-    libstagefright_enc_common.vendor \
-    libstagefright_flacdec.vendor \
-    libstagefright_foundation.vendor \
-    libstagefright_omx.vendor \
-    libstagefright_omx_utils.vendor \
-    libstagefright_softomx.vendor \
-    libstagefright_softomx_plugin.vendor \
-    libstagefright_xmlparser.vendor \
     libstagefrighthw
 
 # Overlays
@@ -413,8 +351,6 @@ PRODUCT_COPY_FILES += \
 
 # QMI
 PRODUCT_PACKAGES += \
-    libcrypto_utils.vendor \
-    libjsoncpp.vendor \
     libjson \
     libqti_vndfwk_detect.vendor \
     libvndfwk_detect_jni.qti \
@@ -438,10 +374,7 @@ PRODUCT_PACKAGES += \
     android.hardware.secure_element@1.1 \
     android.hardware.secure_element@1.2 \
     android.hardware.secure_element@1.1.vendor \
-    android.hardware.secure_element@1.2.vendor \
-    librmnetctl \
-    libsqlite.vendor:64 \
-    libsysutils.vendor
+    android.hardware.secure_element@1.2.vendor
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -468,10 +401,8 @@ PRODUCT_SOONG_NAMESPACES += \
 
 # Seccomp
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/seccomp/atfwd@2.0.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/atfwd@2.0.policy \
     $(LOCAL_PATH)/configs/seccomp/imsrtp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/imsrtp.policy \
     $(LOCAL_PATH)/configs/seccomp/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
-    $(LOCAL_PATH)/configs/seccomp/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy \
     $(LOCAL_PATH)/configs/seccomp/vendor.qti.hardware.dsp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/vendor.qti.hardware.dsp.policy
 
 # Sensors
@@ -496,7 +427,6 @@ PRODUCT_SOONG_NAMESPACES += \
 PRODUCT_PACKAGES += \
     ims-ext-common \
     ims_ext_common.xml \
-    libion.vendor \
     qti-telephony-hidl-wrapper \
     qti_telephony_hidl_wrapper.xml \
     qti-telephony-utils \
@@ -539,13 +469,7 @@ PRODUCT_PACKAGES += \
     TetheringConfigOverlay \
     WifiOverlay \
     wpa_supplicant \
-    wpa_supplicant.conf \
-    wpa_cli
-
-# WiFi firmware symlinks
-PRODUCT_PACKAGES += \
-    firmware_wlan_mac.bin_symlink \
-    firmware_WCNSS_qcom_cfg.ini_symlink
+    wpa_supplicant.conf
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
@@ -554,3 +478,7 @@ PRODUCT_COPY_FILES += \
 
 # Inherit the proprietary files
 $(call inherit-product, vendor/asus/X00QD/X00QD-vendor.mk)
+# WiFi firmware symlinks
+PRODUCT_PACKAGES += \
+    firmware_wlan_mac.bin_symlink \
+    firmware_WCNSS_qcom_cfg.ini_symlink
