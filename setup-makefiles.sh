@@ -62,7 +62,7 @@ function lib_to_package_fixup() {
 }
 
 # Initialize the helper for common
-setup_vendor "${DEVICE_COMMON}" "${VENDOR_COMMON:-$VENDOR}" "${ANDROID_ROOT}" true
+setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}" true
 
 # Warning headers and guards
 write_headers

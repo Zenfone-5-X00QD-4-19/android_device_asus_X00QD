@@ -26,7 +26,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     audio_amplifier.sdm660 \
     audio.bluetooth.default \
-    audio.primary.sdm660 \
     audio.primary.default \
     audio.r_submix.default \
     audio.usb.default \
