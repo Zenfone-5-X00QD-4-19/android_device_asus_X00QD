@@ -27,7 +27,7 @@
         android:key="doze_enable"
         android:title="@string/ambient_display_enable_title" />
 
-    <SwitchPreferenceCompat       
+    <SwitchPreferenceCompat
         android:icon="@drawable/ic_doze_wake"
         android:key="wake_on_gesture"
         android:defaultValue="false"

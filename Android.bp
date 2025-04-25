@@ -1,14 +1,7 @@
-//
-// Copyright (C) 2018-2024 The LineageOS Project
-// SPDX-License-Identifier: Apache-2.0
-//
-
 soong_namespace {
     imports: [
         "hardware/google/interfaces",
-        "hardware/google/pixel",
-        "hardware/qcom-caf/common/libqti-perfd-client",
-        "hardware/lineage/interfaces/power-libperfmgr",
+        "hardware/google/pixel"
     ],
 }
 

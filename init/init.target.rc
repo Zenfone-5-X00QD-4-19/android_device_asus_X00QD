@@ -37,9 +37,6 @@ on init
 
     write /sys/devices/virtual/graphics/fb0/idle_time 100
 
-    # Enable suspend to RAM
-    write /sys/power/mem_sleep "deep"
-
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
@@ -228,9 +225,6 @@ on property:init.svc.vendor.charger=running
     setprop vendor.usb.controller a800000.dwc3
     setprop sys.usb.configfs 1
     start vendor.power_off_alarm
-
-on property:init.svc.vendor.qcrild=stopped
-    stop vendor.radio-config-1-1-wrapper
 
 service vendor.hvdcp_opti /system/vendor/bin/hvdcp_opti
      class main

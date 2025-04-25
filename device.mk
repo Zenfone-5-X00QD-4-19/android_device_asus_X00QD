@@ -31,7 +31,6 @@ PRODUCT_PACKAGES += \
     audio.usb.default \
     liba2dpoffload \
     libaudio-resampler \
-    libaudioroute.vendor \
     libaudioroute \
     libqcompostprocbundle \
     libqcomvisualizer \
@@ -47,6 +46,9 @@ PRODUCT_PACKAGES += \
 # Audio Configs
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/audio/,$(TARGET_COPY_OUT_VENDOR)/etc) \
+    $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/audio_policy_configuration.xml \
+    $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/audio_policy_configuration_ZE620KL.xml \
+    $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/audio_policy_configuration_ZE620KL_24bit.xml \
     device/asus/X00QD/configs/audio/audio_platform_info_intcodec.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
 
 PRODUCT_COPY_FILES += \
@@ -57,31 +59,19 @@ PRODUCT_COPY_FILES += \
 
 # ANT+
 PRODUCT_PACKAGES += \
-    AntHalService-Soong \
-    com.dsi.ant@1.0.vendor
+    AntHalService-Soong
 
 # Boot animation
 TARGET_BOOTANIMATION_HALF_RES := true
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth.audio-impl \
-    android.hardware.bluetooth@1.0.vendor \
-    vendor.qti.hardware.btconfigstore@1.0.vendor \
-    vendor.qti.hardware.btconfigstore@2.0.vendor
+    android.hardware.bluetooth.audio-impl
 
 # Camera
 PRODUCT_PACKAGES += \
-    android.hardware.camera.common@1.0 \
-    android.hardware.camera.device@3.4 \
     android.hardware.camera.provider@2.4-impl \
-    android.hardware.camera.provider@2.4-service \
-    android.hardware.camera.provider@2.5 \
-    android.hardware.camera.provider@2.6 \
-    vendor.qti.hardware.camera.device@1.0
-
-PRODUCT_PACKAGES += \
-    camera.sdm660
+    android.hardware.camera.provider@2.4-service
 
 # Cgroup and task_profiles
 PRODUCT_COPY_FILES += \
@@ -104,10 +94,7 @@ PRODUCT_PACKAGES += \
     gralloc.sdm660 \
     hwcomposer.sdm660 \
     libdisplayconfig \
-    libgralloc.qti \
-    libtinyxml \
-    libqdMetaData \
-    libqdMetaData.system
+    libqdMetaData
 
 PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.1-service \
@@ -115,13 +102,10 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
     android.frameworks.displayservice@1.0 \
     android.frameworks.displayservice@1.0.vendor \
-    vendor.display.config@1.0 \
-    vendor.display.config@1.0.vendor \
     vendor.display.config@2.0 \
     vendor.qti.hardware.display.allocator-service \
     vendor.qti.hardware.display.mapper@1.0.vendor \
     vendor.qti.hardware.display.mapper@1.1.vendor \
-    vendor.qti.hardware.display.mapper@2.0.vendor \
     vendor.qti.hardware.memtrack-service
 
 # Doze mode
@@ -130,10 +114,6 @@ PRODUCT_PACKAGES += \
 
 # DRM
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.0.vendor \
-    android.hardware.drm@1.1.vendor \
-    android.hardware.drm@1.2.vendor \
-    android.hardware.drm@1.3.vendor \
     android.hardware.drm-service.clearkey \
     libcrypto_shim.vendor
 
@@ -156,22 +136,14 @@ PRODUCT_PACKAGES += \
     qcom.fmradio \
     qcom.fmradio.xml
 
-# Gatekeeper
-PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0.vendor
-
 # GPS
 PRODUCT_PACKAGES += \
     android.hardware.gnss@2.1-impl-qti \
     android.hardware.gnss@2.1-service-qti \
-    android.hardware.gnss@1.1.vendor \
-    android.hardware.gnss@2.1.vendor \
     libbatching \
     libgeofencing \
     libgnss \
     libgps.utils \
-    liblocation_api \
-    libsensorndkbridge \
     libwifi-hal-ctrl
 
 PRODUCT_PACKAGES += \
@@ -192,6 +164,7 @@ PRODUCT_PACKAGES += \
 # HIDL
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
+    android.hidl.base@1.0.vendor \
     libhidltransport \
     libhidltransport.vendor \
     libhwbinder \
@@ -210,13 +183,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
+# Kernel
+PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
+PRODUCT_ENABLE_UFFD_GC := false
+
 # IRQ
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
-
-# Keymaster
-PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0.vendor
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -246,12 +219,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml
 
-# Network
-PRODUCT_PACKAGES += \
-    android.system.net.netd@1.1.vendor \
-    libloc_net_iface \
-    libloc_net_iface.vendor \
-
 # NFC
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hce.xml \
@@ -268,7 +235,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
-    NfcNci \
     SecureElement \
     Tag
 
@@ -348,8 +314,6 @@ PRODUCT_COPY_FILES += \
 
 # QMI
 PRODUCT_PACKAGES += \
-    libjson \
-    libqti_vndfwk_detect.vendor \
     libvndfwk_detect_jni.qti \
     libvndfwk_detect_jni.qti.vendor
 
@@ -358,26 +322,12 @@ PRODUCT_COPY_FILES += \
 
 # Radio
 PRODUCT_PACKAGES += \
-    libprotobuf-cpp-full-3.9.1-vendorcompat \
-    libprotobuf-cpp-lite-3.9.1-vendorcompat \
-    librmnetctl \
-    libsqlite.vendor \
-    libsysutils.vendor \
-    libnetutils.vendor \
-    android.hardware.radio@1.5.vendor \
-    android.hardware.radio.config@1.2 \
-    android.hardware.radio.config@1.2.vendor \
-    android.hardware.radio.deprecated@1.0.vendor \
-    android.hardware.secure_element@1.1 \
-    android.hardware.secure_element@1.2 \
-    android.hardware.secure_element@1.1.vendor \
-    android.hardware.secure_element@1.2.vendor
+    libsysutils.vendor
 
 # Ramdisk
 PRODUCT_PACKAGES += \
     init.qcom.post_boot.sh \
     init.qcom.sh \
-    init.qcom.usb.sh \
     init.qti.dcvs.sh
 
 PRODUCT_PACKAGES += \
@@ -407,8 +357,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl \
     android.hardware.sensors@1.0-service \
-    android.frameworks.sensorservice@1.0 \
-    android.frameworks.sensorservice@1.0.vendor \
     libpower.vendor
 
 PRODUCT_COPY_FILES += \
@@ -453,16 +401,11 @@ PRODUCT_PACKAGES += \
     libprotobuf-cpp-full-vendorcompat \
     libprotobuf-cpp-lite-vendorcompat
 
-# VNDK
-PRODUCT_COPY_FILES += \
-    prebuilts/vndk/v34/arm64/arch-arm64-armv8-a/shared/vndk-core/libcrypto.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libcrypto-v34.so \
-
 # Wifi
 PRODUCT_PACKAGES += \
     android.hardware.wifi-service \
     hostapd \
     libwifi-hal-qcom \
-    libcld80211 \
     libwpa_client \
     TetheringConfigOverlay \
     WifiOverlay \
