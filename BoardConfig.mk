@@ -24,6 +24,7 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := generic
 TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a73
 
+SELINUX_IGNORE_NEVERALLOWS := true
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := ASUS_X00QD,X00QD,X00Q
@@ -94,11 +95,8 @@ DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 
 # Init
-TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_X00QD
+$(call soong_config_set,libinit,vendor_init_lib,libinit_X00QD)
 TARGET_RECOVERY_DEVICE_MODULES := libinit_X00QD
-
-# Lineage Health
-TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS := false
 
 # LMKD
 TARGET_LMKD_STATS_LOG := true
