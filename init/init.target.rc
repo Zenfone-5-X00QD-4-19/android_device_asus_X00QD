@@ -230,3 +230,6 @@ service vendor.hvdcp_opti /system/vendor/bin/hvdcp_opti
      class main
      user root
      group system wakelock
+
+on property:sys.boot_completed=1
+    chmod 440 /proc/net/unix
