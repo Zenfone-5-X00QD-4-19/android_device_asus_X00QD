@@ -103,7 +103,6 @@ persist.vendor.camera.perflock.enable=0
 persist.vendor.camera.dual.isp.sync=0
 
 # Display
-debug.sf.auto_latch_unsignaled=1
 debug.sf.enable_hwc_vds=1
 debug.sf.hw=1
 ro.hardware.egl=adreno
