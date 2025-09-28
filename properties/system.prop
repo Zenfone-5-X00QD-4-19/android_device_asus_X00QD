@@ -106,3 +106,6 @@ persist.timed.enable=true
 
 # Multi-Gen LRU
 persist.device_config.mglru_native.lru_gen_config=core
+
+# LTE_CA
+persist.sys.radio.force_lte_ca=true
