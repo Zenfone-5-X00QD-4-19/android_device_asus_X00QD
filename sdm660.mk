@@ -316,16 +316,8 @@ BOARD_SHIPPING_API_LEVEL := 30
 
 # OMX
 PRODUCT_PACKAGES += \
-    libc2dcolorconvert \
     libmm-omxcore \
-    libOmxAacEnc \
-    libOmxAmrEnc \
     libOmxCore \
-    libOmxEvrcEnc \
-    libOmxG711Enc \
-    libOmxQcelp13Enc \
-    libOmxVdec \
-    libOmxVenc \
     libstagefright_amrnb_common.vendor \
     libstagefright_enc_common \
     libstagefright_enc_common.vendor \

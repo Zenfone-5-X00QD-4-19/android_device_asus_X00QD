@@ -420,6 +420,17 @@ vendor/lib/libOmxG711Dec.so|200e5266e2258c07e28f1e7d3858cc239e6e9e6b
 vendor/lib/libOmxQcelp13Dec.so|c3c66b571f2ef44197fc88f6800745c39e7db87b
 vendor/lib/libOmxWmaDec.so|90f78772f70f2d5a46712f95d1a53cfedffb9c63
 
+# OMX - from Zebra/helios/helios:14/14-23-05.00-UG-U05-STD-HEL-04/5:user/release-keys
+vendor/lib/libc2dcolorconvert.so|6f33a67d4934a57c0d7e08af084e0dc96b2beaf1
+vendor/lib/libOmxAacEnc.so|ce2a7b828943b1fd434bb2657f4db6198440e936
+vendor/lib/libOmxAmrEnc.so|04672bbd143aec157ca42f090c20c9cf8eec0c60
+vendor/lib/libOmxEvrcEnc.so|85f29238eb0407e3f72ef708bb0b2047742e0e34
+vendor/lib/libOmxG711Enc.so|2f8b452225bb8114080d82d3b9c968b3bd43f447
+vendor/lib/libOmxQcelp13Enc.so|8f6063ce99c1440d35328a4835fc44307eb2b567
+vendor/lib/libOmxVdec.so|4924d4e0aa49a4c9f8e1e5522c35773699b8c3ef
+vendor/lib/libOmxVenc.so|e89c5f57a405cfc9724440ea7b180038f4b5f4f8
+vendor/lib/libhypv_intercept.so|04ae8be6929f926b121378b62420344793d93d88
+    
 # MM OSAL - from Zebra/helios/helios:14/14-23-05.00-UG-U05-STD-HEL-04/5:user/release-keys
 vendor/lib/libmmosal.so|400faa144d8ba5529fbab317d82b00abda16abe6
 vendor/lib64/libmmosal.so|81e7792d7de9e36bc948bc2c87175a2ce28bf64b
