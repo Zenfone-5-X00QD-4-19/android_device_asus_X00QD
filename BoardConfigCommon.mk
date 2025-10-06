@@ -158,16 +158,9 @@ BOARD_KERNEL_CMDLINE := \
     console=ttyMSM0,115200n8 \
     androidboot.console=ttyMSM0
 BOARD_KERNEL_BASE := 0x00000000
-#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-TARGET_KERNEL_SOURCE := kernel/asus/sdm660
-TARGET_KERNEL_VERSION := 4.19
-
-# Kernel Clang Flags
-KERNEL_CC := CC=clang
-override KERNEL_TOOLCHAIN_PREFIX_arm := arm-linux-android-
 
 # GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
@@ -183,18 +176,12 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
 ODM_MANIFEST_SKUS += NFC
 ODM_MANIFEST_NFC_FILES := $(COMMON_PATH)/manifest_nfc.xml
 
-# HWUI
-HWUI_COMPILE_FOR_PERF := true
-
 # Init
 $(call soong_config_set,libinit,vendor_init_lib,//$(COMMON_PATH):libinit_sdm660)
 TARGET_RECOVERY_DEVICE_MODULES := libinit_sdm660
 
 # Lineage Health
 $(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/power_supply/battery/charging_enabled)
-
-# LMKD
-TARGET_LMKD_STATS_LOG := true
 
 # Media
 USE_DEVICE_SPECIFIC_MEDIA := true
