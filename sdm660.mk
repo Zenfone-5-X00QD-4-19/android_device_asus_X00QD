@@ -534,6 +534,9 @@ PRODUCT_VENDOR_PROPERTIES += \
 # Vibrator
 $(call inherit-product, vendor/qcom/opensource/vibrator/vibrator-vendor-product.mk)
 
+# ViPER4Android
+$(call inherit-product, packages/apps/ViPER4AndroidFX/config.mk)
+
 # protobuf
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-full-3.9.1-vendorcompat \
