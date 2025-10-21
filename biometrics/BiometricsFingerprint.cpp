@@ -213,91 +213,104 @@ IBiometricsFingerprint* BiometricsFingerprint::getInstance() {
     return sInstance;
 }
 
-static bool tryOpenHalModule(const FpConfig& config,
-                             const hw_module_t** hw_mdl_out,
-                             hw_device_t** device_out) {
+fingerprint_device_t* getDeviceForVendor(const char *class_id, const char *class_name)
+{
+    const hw_module_t *hw_module = nullptr;
+    const char *fp_module_name;
     int err;
-    const hw_module_t *hw_mdl = nullptr;
-
-    ALOGD("Trying to open fingerprint hal module: %s.%s...", config.id, config.vendor);
-
-    err = hw_get_module_by_class(config.id, config.vendor, &hw_mdl);
-    if (err != 0) {
-        ALOGE("Can't open fingerprint HW Module (%s), error: %d", config.vendor, err);
-        return false;
+    
+    // We intentionally make class_name null for cdfinger
+    if (class_name == nullptr) {
+    	fp_module_name = "cdfinger";
+    } else {
+    	fp_module_name = class_name;
     }
 
-    if (hw_mdl == nullptr) {
-        ALOGE("No valid fingerprint module for %s", config.vendor);
-        return false;
+    err = hw_get_module_by_class(class_id, class_name, &hw_module);
+    if (err) {
+        ALOGE("Failed to get fingerprint module: class %s, error %d", fp_module_name, err);
+        return nullptr;
     }
 
-    const fingerprint_module_t *module = reinterpret_cast<const fingerprint_module_t*>(hw_mdl);
+    if (hw_module == nullptr) {
+        ALOGE("No valid fingerprint module: class %s", fp_module_name);
+        return nullptr;
+    }
 
-    if (module->common.methods->open == nullptr) {
-        ALOGE("No valid open method for %s", config.id);
-        return false;
+    fingerprint_module_t const *fp_module =
+            reinterpret_cast<const fingerprint_module_t*>(hw_module);
+
+    if (fp_module->common.methods->open == nullptr) {
+        ALOGE("No valid open method: class %s", fp_module_name);
+        return nullptr;
     }
 
     hw_device_t *device = nullptr;
 
-    err = module->common.methods->open(hw_mdl, nullptr, &device);
-    if (err != 0) {
-        ALOGE("Can't open fingerprint methods for %s, error: %d", config.vendor, err);
-        return false;
-    }
-
-    *hw_mdl_out = hw_mdl;
-    *device_out = device;
-    return true;
-}
-
-fingerprint_device_t* BiometricsFingerprint::openHal() {
-    const hw_module_t *hw_mdl = nullptr;
-    hw_device_t *device = nullptr;
-    fingerprint_device_t* fp_device = nullptr;
-    const FpConfig *active_config = nullptr;
-    int err;
-
-    const FpConfig configs[] = {
-        {FINGERPRINT_HARDWARE_MODULE_ID, "focaltech"},
-        {FINGERPRINT_HARDWARE_MODULE_ID, "goodix"},
-        {"cdfinger.fingerprint", "cdfinger"}
-    };
-
-    for (const auto& config : configs) {
-        if (tryOpenHalModule(config, &hw_mdl, &device)) {
-            active_config = &config;
-            break;
-        }
-    }
-
-    if (active_config == nullptr) {
-        ALOGE("Failed to open any valid fingerprint HAL module.");
-        goto init_err;
+    err = fp_module->common.methods->open(hw_module, nullptr, &device);
+    if (err) {
+        ALOGE("Can't open fingerprint methods, class %s, error: %d", fp_module_name, err);
+        return nullptr;
     }
 
     if (kVersion != device->version) {
-        ALOGE("Wrong fp version. Expected %d, got %d", kVersion, device->version);
-        goto init_err;
+        ALOGE("Wrong fingerprint version: expected %d, got %d", kVersion, device->version);
+        return nullptr;
     }
 
-    ALOGD("%s module is working", active_config->vendor);
-    property_set("persist.vendor.runin.fp", active_config->vendor);
+    fingerprint_device_t *fp_device =
+            reinterpret_cast<fingerprint_device_t*>(device);
 
-    fp_device = reinterpret_cast<fingerprint_device_t*>(device);
+    ALOGI("Loaded fingerprint module: class %s", fp_module_name);
+    property_set("persist.vendor.runin.fp", fp_module_name);
+    return fp_device;
+}
 
-    err = fp_device->set_notify(fp_device, BiometricsFingerprint::notify);
-    if (err != 0) {
+fingerprint_device_t* getFingerprintDevice()
+{
+    fingerprint_device_t *fp_device;
+
+    fp_device = getDeviceForVendor("cdfinger.fingerprint", nullptr);
+    if (fp_device == nullptr) {
+        ALOGE("Failed to load cdfinger fingerprint module");
+    } else {
+        return fp_device;
+    }
+
+    fp_device = getDeviceForVendor("fingerprint", "focaltech");
+    if (fp_device == nullptr) {
+        ALOGE("Failed to load focaltech fingerprint module");
+    } else {
+        return fp_device;
+    }
+
+    fp_device = getDeviceForVendor("fingerprint", "goodix");
+    if (fp_device == nullptr) {
+        ALOGE("Failed to load goodix fingerprint module");
+    } else {
+        return fp_device;
+    }
+
+    property_set("persist.vendor.runin.fp", "unknown");
+    return nullptr;
+}
+
+fingerprint_device_t* BiometricsFingerprint::openHal() {
+    int err;
+
+    fingerprint_device_t *fp_device;
+    fp_device = getFingerprintDevice();
+    if (fp_device == nullptr) {
+        return nullptr;
+    }
+
+    if (0 != (err =
+            fp_device->set_notify(fp_device, BiometricsFingerprint::notify))) {
         ALOGE("Can't register fingerprint module callback, error: %d", err);
-        goto init_err;
+        return nullptr;
     }
 
     return fp_device;
-
-init_err:
-    property_set("persist.vendor.runin.fp", "unknown");
-    return nullptr;
 }
 
 void BiometricsFingerprint::notify(const fingerprint_msg_t *msg) {

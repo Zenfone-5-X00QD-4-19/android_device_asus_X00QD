@@ -81,9 +81,4 @@ private:
 }  // namespace hardware
 }  // namespace android
 
-struct FpConfig {
-    const char* id;
-    const char* vendor;
-};
-
 #endif  // ANDROID_HARDWARE_BIOMETRICS_FINGERPRINT_V2_1_BIOMETRICSFINGERPRINT_H
