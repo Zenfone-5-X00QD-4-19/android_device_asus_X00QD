@@ -183,6 +183,10 @@ PRODUCT_PACKAGES += \
     libhidlmemory.vendor:64 \
     libcrypto-v33
 
+# Fingerprint
+PRODUCT_PACKAGES += \
+    android.hardware.biometrics.fingerprint@2.1-service-sdm660
+
 # FM
 PRODUCT_PACKAGES += \
     android.hardware.broadcastradio@1.0-impl
