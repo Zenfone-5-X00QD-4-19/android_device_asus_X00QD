@@ -13,8 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#define LOG_TAG "android.hardware.biometrics.fingerprint@2.1-service-sdm660"
-#define LOG_VERBOSE "android.hardware.biometrics.fingerprint@2.1-service-sdm660"
+#define LOG_TAG "android.hardware.biometrics.fingerprint@2.1-service-asus_sdm660"
+#define LOG_VERBOSE "android.hardware.biometrics.fingerprint@2.1-service-asus_sdm660"
 
 #include <hardware/hw_auth_token.h>
 
@@ -152,17 +152,10 @@ Return<uint64_t> BiometricsFingerprint::setNotify(
     // unique token for its driver. Subsequent versions should send a unique
     // token for each call to setNotify(). This is fine as long as there's only
     // one fingerprint device on the platform.
-    if (mDevice == nullptr) {
-    	return -1;
-    }
-
     return reinterpret_cast<uint64_t>(mDevice);
 }
 
 Return<uint64_t> BiometricsFingerprint::preEnroll()  {
-    if (mDevice == nullptr) {
-        return -1; 
-    }
     return mDevice->pre_enroll(mDevice);
 }
 
@@ -171,52 +164,31 @@ Return<RequestStatus> BiometricsFingerprint::enroll(const hidl_array<uint8_t, 69
     const hw_auth_token_t* authToken =
         reinterpret_cast<const hw_auth_token_t*>(hat.data());
 
-    if (mDevice == nullptr) {
-        return RequestStatus::SYS_EIO;
-    }
     return ErrorFilter(mDevice->enroll(mDevice, authToken, gid, timeoutSec));
 }
 
 Return<RequestStatus> BiometricsFingerprint::postEnroll() {
-    if (mDevice == nullptr) {
-        return RequestStatus::SYS_EIO;
-    }
     return ErrorFilter(mDevice->post_enroll(mDevice));
 }
 
 Return<uint64_t> BiometricsFingerprint::getAuthenticatorId() {
-    if (mDevice == nullptr) {
-        return -1;
-    }
     return mDevice->get_authenticator_id(mDevice);
 }
 
 Return<RequestStatus> BiometricsFingerprint::cancel() {
-    if (mDevice == nullptr) {
-        return RequestStatus::SYS_EIO;
-    }
     return ErrorFilter(mDevice->cancel(mDevice));
 }
 
 Return<RequestStatus> BiometricsFingerprint::enumerate()  {
-    if (mDevice == nullptr) {
-        return RequestStatus::SYS_EIO;
-    }
     return ErrorFilter(mDevice->enumerate(mDevice));
 }
 
 Return<RequestStatus> BiometricsFingerprint::remove(uint32_t gid, uint32_t fid) {
-    if (mDevice == nullptr) {
-        return RequestStatus::SYS_EIO;
-    }
     return ErrorFilter(mDevice->remove(mDevice, gid, fid));
 }
 
 Return<RequestStatus> BiometricsFingerprint::setActiveGroup(uint32_t gid,
         const hidl_string& storePath) {
-    if (mDevice == nullptr) {
-        return RequestStatus::SYS_EIO;
-    }
     if (storePath.size() >= PATH_MAX || storePath.size() <= 0) {
         ALOGE("Bad path length: %zd", storePath.size());
         return RequestStatus::SYS_EINVAL;
@@ -231,9 +203,6 @@ Return<RequestStatus> BiometricsFingerprint::setActiveGroup(uint32_t gid,
 
 Return<RequestStatus> BiometricsFingerprint::authenticate(uint64_t operationId,
         uint32_t gid) {
-    if (mDevice == nullptr) {
-        return RequestStatus::SYS_EIO;
-    }
     return ErrorFilter(mDevice->authenticate(mDevice, operationId, gid));
 }
 
@@ -249,17 +218,17 @@ static bool tryOpenHalModule(const FpConfig& config,
                              hw_device_t** device_out) {
     int err;
     const hw_module_t *hw_mdl = nullptr;
-    hw_device_t *device = nullptr;
 
-    ALOGD("Trying to open fingerprint hal module: %s...", config.id);
+    ALOGD("Trying to open fingerprint hal module: %s.%s...", config.id, config.vendor);
 
-    if (0 != (err = hw_get_module(config.id, &hw_mdl))) {
-        ALOGE("Can't open fingerprint HW Module (%s), error: %d", config.id, err);
+    err = hw_get_module_by_class(config.id, config.vendor, &hw_mdl);
+    if (err != 0) {
+        ALOGE("Can't open fingerprint HW Module (%s), error: %d", config.vendor, err);
         return false;
     }
 
     if (hw_mdl == nullptr) {
-        ALOGE("No valid fingerprint module for %s", config.id);
+        ALOGE("No valid fingerprint module for %s", config.vendor);
         return false;
     }
 
@@ -270,8 +239,11 @@ static bool tryOpenHalModule(const FpConfig& config,
         return false;
     }
 
-    if (0 != (err = module->common.methods->open(hw_mdl, nullptr, &device))) {
-        ALOGE("Can't open fingerprint methods for %s, error: %d", config.id, err);
+    hw_device_t *device = nullptr;
+
+    err = module->common.methods->open(hw_mdl, nullptr, &device);
+    if (err != 0) {
+        ALOGE("Can't open fingerprint methods for %s, error: %d", config.vendor, err);
         return false;
     }
 
@@ -288,8 +260,8 @@ fingerprint_device_t* BiometricsFingerprint::openHal() {
     int err;
 
     const FpConfig configs[] = {
-        {"fingerprint", "focaltech"},
-        {"fingerprint", "goodix"},
+        {FINGERPRINT_HARDWARE_MODULE_ID, "focaltech"},
+        {FINGERPRINT_HARDWARE_MODULE_ID, "goodix"},
         {"cdfinger.fingerprint", "cdfinger"}
     };
 
@@ -305,18 +277,18 @@ fingerprint_device_t* BiometricsFingerprint::openHal() {
         goto init_err;
     }
 
-    ALOGD("%s module is working", active_config->vendor);
-    property_set("persist.vendor.runin.fp", active_config->vendor);
-
     if (kVersion != device->version) {
         ALOGE("Wrong fp version. Expected %d, got %d", kVersion, device->version);
         goto init_err;
     }
 
+    ALOGD("%s module is working", active_config->vendor);
+    property_set("persist.vendor.runin.fp", active_config->vendor);
+
     fp_device = reinterpret_cast<fingerprint_device_t*>(device);
 
-    if (0 != (err =
-            fp_device->set_notify(fp_device, BiometricsFingerprint::notify))) {
+    err = fp_device->set_notify(fp_device, BiometricsFingerprint::notify);
+    if (err != 0) {
         ALOGE("Can't register fingerprint module callback, error: %d", err);
         goto init_err;
     }
