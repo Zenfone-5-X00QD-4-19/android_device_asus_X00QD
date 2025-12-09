@@ -98,8 +98,7 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.sdm660 \
-    Aperture
+    camera.sdm660
 
 PRODUCT_PACKAGES += \
     android.hardware.camera.common@1.0 \
