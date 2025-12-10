@@ -473,9 +473,6 @@
         <item>1</item> <!-- COLOR_MODE_BOOSTED -->
     </integer-array>
 
-    <!-- Whether of not wallpaper scrolling should be on or not. It may cuz lag in some low-end devices -->
-     <item name="config_wallpaperMaxScale" format="float" type="dimen">1.00</item>
-
     <!-- Specify if the fingerprint hardware support gestures-->
     <bool name="config_fingerprintSupportsGestures">false</bool>
 
