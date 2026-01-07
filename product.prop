@@ -4,6 +4,9 @@ ro.surface_flinger.supports_background_blur=0
 # Radio
 ro.telephony.block_binder_thread_on_incoming_calls=false
 
+# eBPF
+ro.bpf.kver_override=5.10.239
+
 # LMKD
 ro.lmk.low=1001
 ro.lmk.medium=800

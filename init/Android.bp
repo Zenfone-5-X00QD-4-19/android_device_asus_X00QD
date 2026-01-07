@@ -33,13 +33,6 @@ prebuilt_etc {
     ramdisk_available: true,
 }
 
-prebuilt_etc {
-    name: "fstab.qcom.ramdisk",
-    src: "fstab.qcom",
-    filename: "fstab.qcom",
-    ramdisk: true,
-}
-
 // Init configuration files
 prebuilt_etc {
     name: "init.qcom.asus.rc",
