@@ -97,6 +97,9 @@ PRODUCT_PACKAGES += \
     gralloc.sdm660 \
     hwcomposer.sdm660 \
     libdisplayconfig \
+    libgralloc.qti \
+    libtinyxml \
+    libqdMetaData.system \
     libqdMetaData
 
 PRODUCT_PACKAGES += \
@@ -336,6 +339,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     fstab.qcom \
+    fstab.qcom.ramdisk \
     init.qcom.asus.rc \
     init.qcom.rc \
     init.recovery.qcom.rc \
