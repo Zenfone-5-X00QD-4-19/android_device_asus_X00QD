@@ -99,6 +99,8 @@ PRODUCT_PACKAGES += \
     libdisplayconfig \
     libgralloc.qti \
     libtinyxml \
+    libsdmcore \
+    libsdmutils \
     libqdMetaData.system \
     libqdMetaData
 
@@ -213,7 +215,8 @@ PRODUCT_PACKAGES += \
 # Media
 PRODUCT_PACKAGES += \
     libavservices_minijail \
-    libavservices_minijail.vendor
+    libavservices_minijail.vendor  \
+    libstagefright_softomx_plugin.vendor
 
 # Media configs
 PRODUCT_COPY_FILES += \
