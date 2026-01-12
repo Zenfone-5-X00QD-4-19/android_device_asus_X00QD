@@ -27,6 +27,12 @@
 #
 #
 
+# X00QD specific partition directories
+on init
+    mkdir /ADF 0771 system system
+    mkdir /APD 0771 system system
+    mkdir /asdf 0771 system system
+
 # Smart charging
 on boot
     chown system system /sys/class/power_supply/battery/charging_enabled

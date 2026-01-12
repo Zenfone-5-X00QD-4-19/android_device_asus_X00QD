@@ -22,3 +22,8 @@ type proc_last_kmsg, fs_type, proc_type;
 # sensors
 type sysfs_input, sysfs_type, fs_type;
 type sysfs_sensor, sysfs_type, fs_type;
+
+# X00QD specific partitions
+type demoapp_file, file_type;
+type factory_file, file_type;
+type log_file, file_type;

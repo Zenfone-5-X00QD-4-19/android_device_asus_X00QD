@@ -4,11 +4,13 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-COMMON_PATH := device/asus/sdm660-common
+DEVICE_PATH := device/asus/X00QD
 
 BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
 RELAX_USES_LIBRARY_CHECK := true
 TEMPORARY_DISABLE_PATH_RESTRICTIONS := true
+BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 
 # Architecture
 TARGET_ARCH := arm64
@@ -25,9 +27,12 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := generic
 TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a73
 
+# Assert
+TARGET_OTA_ASSERT_DEVICE := ASUS_X00QD,X00QD,X00Q
+
 # Audio
 USE_DEVICE_SPECIFIC_AUDIO := true
-DEVICE_SPECIFIC_AUDIO_PATH := $(COMMON_PATH)/qcom-caf/audio
+DEVICE_SPECIFIC_AUDIO_PATH := $(DEVICE_PATH)/qcom-caf/audio
 AUDIO_FEATURE_ENABLED_EXT_AMPLIFIER := false
 AUDIO_FEATURE_ENABLED_TFA98XX_AMPLIFIER := true
 
@@ -106,10 +111,8 @@ ART_BUILD_HOST_NDEBUG := true
 ART_BUILD_HOST_DEBUG := false
 
 # Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := sdm660
 TARGET_NO_BOOTLOADER := true
-
-# Build
-BUILD_BROKEN_DUP_RULES := true
 
 # Camera
 BOARD_QTI_CAMERA_32BIT_ONLY := true
@@ -119,8 +122,8 @@ TARGET_USES_YCRCB_CAMERA_ENCODE := true
 
 # Display
 USE_DEVICE_SPECIFIC_DISPLAY := true
-DEVICE_SPECIFIC_DISPLAY_PATH := $(COMMON_PATH)/qcom-caf/display
-TARGET_SCREEN_DENSITY := 440
+DEVICE_SPECIFIC_DISPLAY_PATH := $(DEVICE_PATH)/qcom-caf/display
+TARGET_SCREEN_DENSITY := 420
 TARGET_USES_GRALLOC1 := true
 TARGET_USES_HWC2 := true
 TARGET_USES_ION := true
@@ -131,11 +134,8 @@ TARGET_USES_GRALLOC4 := true
 # DRM
 TARGET_ENABLE_MEDIADRM_64 := true
 
-# ELF Prebuilts
-BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
-
 # Filesystem
-TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
+TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 
 # FM
 BOARD_HAS_QCA_FM_SOC := cherokee
@@ -168,25 +168,22 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
 GNSS_HIDL_VERSION := 2.1
 
 # HIDL
-DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
-DEVICE_MATRIX_FILE := $(COMMON_PATH)/compatibility_matrix.xml
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
+DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
-    $(COMMON_PATH)/framework_compatibility_matrix.xml \
-    $(COMMON_PATH)/dolby_compat_framework_matrix.xml
-
-ODM_MANIFEST_SKUS += NFC
-ODM_MANIFEST_NFC_FILES := $(COMMON_PATH)/manifest_nfc.xml
+    $(DEVICE_PATH)/framework_compatibility_matrix.xml \
+    $(DEVICE_PATH)/dolby_compat_framework_matrix.xml
 
 # Init
-$(call soong_config_set,libinit,vendor_init_lib,//$(COMMON_PATH):libinit_sdm660)
-TARGET_RECOVERY_DEVICE_MODULES := libinit_sdm660
+$(call soong_config_set,libinit,vendor_init_lib,//$(DEVICE_PATH):libinit_X00QD)
+TARGET_RECOVERY_DEVICE_MODULES := libinit_X00QD
 
 # Lineage Health
 $(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/power_supply/battery/charging_enabled)
 
 # Media
 USE_DEVICE_SPECIFIC_MEDIA := true
-DEVICE_SPECIFIC_MEDIA_PATH := $(COMMON_PATH)/qcom-caf/media
+DEVICE_SPECIFIC_MEDIA_PATH := $(DEVICE_PATH)/qcom-caf/media
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
@@ -209,8 +206,15 @@ TARGET_COPY_OUT_VENDOR := vendor
 
 AB_OTA_UPDATER := false
 
+# Extra folders for X00QD
+BOARD_ROOT_EXTRA_FOLDERS := APD asdf odm oem
+
 BOARD_ROOT_EXTRA_SYMLINKS := \
-    /mnt/vendor/persist:/persist
+    /mnt/vendor/persist:/persist \
+    /vendor/dsp:/dsp \
+    /vendor/firmware_mnt:/firmware \
+    /vendor/ADF:/ADF \
+    /vendor/factory:factory
 
 # Platform
 TARGET_BOARD_PLATFORM := sdm660
@@ -219,32 +223,32 @@ TARGET_BOARD_PLATFORM := sdm660
 TARGET_USES_INTERACTION_BOOST := true
 
 # Properties
-TARGET_ODM_PROP += $(COMMON_PATH)/properties/odm.prop
-TARGET_PRODUCT_PROP += $(COMMON_PATH)/properties/product.prop
-TARGET_SYSTEM_PROP += $(COMMON_PATH)/properties/system.prop
-TARGET_VENDOR_PROP += $(COMMON_PATH)/properties/vendor.prop
+TARGET_ODM_PROP += $(DEVICE_PATH)/properties/odm.prop
+TARGET_PRODUCT_PROP += $(DEVICE_PATH)/properties/product.prop
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/properties/system.prop
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/properties/vendor.prop
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 
 # Releasetools
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_asus
-TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)
+TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
 # RIL
 ENABLE_VENDOR_RIL_SERVICE := true
 
 # Sepolicy
 include device/qcom/sepolicy-legacy-um/SEPolicy.mk
-BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
-SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
+BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
 
 # Soong namespaces
-PRODUCT_SOONG_NAMESPACES += $(COMMON_PATH)
+PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
 
 # Vendor Security patch level
 VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
@@ -268,4 +272,4 @@ CONFIG_ACS := true
 CONFIG_IEEE80211AC := true
 
 # Inherit the proprietary files
-include vendor/asus/sdm660-common/BoardConfigVendor.mk
+include vendor/asus/X00QD/BoardConfigVendor.mk

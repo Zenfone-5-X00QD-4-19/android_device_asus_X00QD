@@ -44,3 +44,10 @@
 /sys/devices/virtual/wakeup(/.*)?                       u:object_r:sysfs:s0
 /sys/devices/platform/soc/c1b7000.i2c/i2c-7/7-0048/wakeup(/.*)?                       u:object_r:sysfs:s0
 /sys/devices/platform/soc/c1b7000.i2c/i2c-7/7-0047/wakeup(/.*)?                       u:object_r:sysfs:s0
+
+# X00QD specific partitions
+/(ADF|vendor/ADF)                                                          u:object_r:demoapp_file:s0
+/(APD|vendor/APD)                                                          u:object_r:demoapp_file:s0
+/(asdf|vendor/asdf)                                                        u:object_r:log_file:s0
+/(factory|vendor/factory)                                                  u:object_r:factory_file:s0
+/asusfw(/.*)?                                                              u:object_r:factory_file:s0
