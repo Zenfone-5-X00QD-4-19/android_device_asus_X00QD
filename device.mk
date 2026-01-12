@@ -7,7 +7,7 @@
 # Add common definitions for Qualcomm
 $(call inherit-product, hardware/qcom-caf/common/common.mk)
 
-include vendor/lineage-priv/keys/keys.mk
+include vendor/evolution-priv/keys/keys.mk
 
 
 # Default is nosdcard, S/W button enabled in resource
