@@ -7,11 +7,7 @@
 /mnt/vendor/dsp/fastrpc_shell_3										u:object_r:public_adsprpcd_file:s0
 
 # CNE
-/(vendor|system/vendor)/bin/mutualex									u:object_r:vendor_mutualex_exec:s0
-
-# Dolby
-/data/vendor/dolby(/.*)?                                                      u:object_r:vendor_data_file:s0
-/(vendor|system/vendor)/bin/hw/vendor\.dolby\.hardware\.dms@2\.0-service      u:object_r:hal_dms_default_exec:s0
+/(vendor|system/vendor)/bin/mutualex								u:object_r:vendor_mutualex_exec:s0
 
 # Persist
 /persist(/.*)?												u:object_r:mnt_vendor_file:s0
