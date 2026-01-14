@@ -13,9 +13,8 @@
 /persist(/.*)?												u:object_r:mnt_vendor_file:s0
 
 # Sensors
-/sys/devices/virtual/input/input[0-9]+/stk3x[0-9]x-light(/.*)?						u:object_r:sysfs_input:s0
-/sys/devices/virtual/input/input[0-9]+/stk3x[0-9]x-proximity(/.*)?					u:object_r:sysfs_input:s0
-/sys/module/stk3x[0-9]x/parameters/call_status_flag							u:object_r:sysfs_call_status:s0
+/sys/devices/virtual/sensors/frgbsensor(/.*)?		u:object_r:sysfs_sensors:s0
+/sys/devices/virtual/sensors/[lp]sensor(/.*)?		u:object_r:sysfs_sensors:s0
 
 # Vibrator
 /sys/devices/platform/soc/800f000.qcom,spmi/spmi-0/spmi0-01/800f000.qcom,spmi:qcom.pm660@1:qcom,haptics@c000/leds/vibrator(/.*)?             u:object_r:sysfs_vibrator:s0
@@ -23,6 +22,10 @@
 # Firmware
 /firmware                                                                                               u:object_r:firmware_file:s0
 /bt_firmware                                                                                            u:object_r:bt_firmware_file:s0
+
+# NFC
+/(vendor|system/vendor)/bin/hw/vendor\.nxp\.nxpnfc@1\.0-service         u:object_r:nxpnfc_hal_svc_exec:s0
+
 
 # Kcal
 /sys/devices/platform/kcal_ctrl.0(/.*)?                                                                                           u:object_r:kcal_dev:s0
@@ -37,8 +40,4 @@
 /sys/devices/platform/soc/c1b7000.i2c/i2c-7/7-0047/wakeup(/.*)?                       u:object_r:sysfs:s0
 
 # X00QD specific partitions
-/(ADF|vendor/ADF)                                                          u:object_r:demoapp_file:s0
-/(APD|vendor/APD)                                                          u:object_r:demoapp_file:s0
-/(asdf|vendor/asdf)                                                        u:object_r:log_file:s0
 /(factory|vendor/factory)                                                  u:object_r:factory_file:s0
-/asusfw(/.*)?                                                              u:object_r:factory_file:s0

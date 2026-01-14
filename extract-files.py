@@ -18,9 +18,12 @@ from extract_utils.main import (
     ExtractUtilsModule,
 )
 
+import extract_utils.tools
+extract_utils.tools.DEFAULT_PATCHELF_VERSION = '0_9'
+
 namespace_imports = [
-    'device/asus/sdm660-common',
-    'device/asus/sdm660-common/qcom-caf',
+    'device/asus/X00QD',
+    'device/asus/X00QD/qcom-caf',
     'hardware/qcom-caf/wlan',
     'vendor/qcom/opensource/dataservices',
 ]
@@ -120,7 +123,7 @@ blob_fixups: blob_fixups_user_type = {
 
 # Define the module
 module = ExtractUtilsModule(
-    'sdm660-common',
+    'X00QD',
     'asus',
     blob_fixups=blob_fixups,
     lib_fixups=lib_fixups,

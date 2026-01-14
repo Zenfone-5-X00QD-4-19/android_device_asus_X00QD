@@ -1,1 +1,2 @@
 allow sensors diag_device:chr_file { read };
+get_prop(sensors, vendor_sensors_prop)

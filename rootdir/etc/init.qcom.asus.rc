@@ -27,24 +27,48 @@
 #
 #
 
-# X00QD specific partition directories
-on init
-    mkdir /ADF 0771 system system
-    mkdir /APD 0771 system system
-    mkdir /asdf 0771 system system
+on early-init
+    mkdir /vendor/factory 0755 system system
+
+on charger
+    chown system system /vendor/factory
+    chmod 0770 /vendor/factory
+
+    chown root root /asdf
+    chmod 0775 /asdf
 
 # Smart charging
 on boot
     chown system system /sys/class/power_supply/battery/charging_enabled
     chmod 0660 /sys/class/power_supply/battery/charging_enabled
 
-# DT2W & Gestures
 on boot
-    # Tap to wake node
-    chown system system /sys/kernel/touchpanel/dclicknode
-    chmod 0660 /sys/kernel/touchpanel/dclicknode
-    chown system system /sys/kernel/touchpanel/gesture_node
-    chmod 0660 /sys/kernel/touchpanel/gesture_node
+    # Fingerprint permissions
+    chmod 0666 /dev/fpsdev0
+    chown system system /dev/fpsdev0
+    chmod 0666 /dev/goodix_fp
+    chown system system /dev/goodix_fp
+
+on fs
+    chmod 0770 /vendor/factory
+    restorecon_recursive /vendor/factory
+
+    chown system system /factory
+    chown system system /factory/*
+    chmod 0775 /factory
+    chmod 0775 /factory/*
+
+    chown system system /sys/devices/virtual/sensors/frgbsensor/switch
+    chown system system /sys/devices/virtual/sensors/lsensor/adc
+    chown system system /sys/devices/virtual/sensors/lsensor/cal
+    chown system system /sys/devices/virtual/sensors/lsensor/selection
+    chown system system /sys/devices/virtual/sensors/lsensor/switch
+    chown system system /sys/devices/virtual/sensors/psensor/hi_cal
+    chown system system /sys/devices/virtual/sensors/psensor/inf_cal
+    chown system system /sys/devices/virtual/sensors/psensor/low_cal
+    chown system system /sys/devices/virtual/sensors/psensor/proxm
+    chown system system /sys/devices/virtual/sensors/psensor/selection
+    chown system system /sys/devices/virtual/sensors/psensor/switch
 
 # USB
 on property:ro.product.vendor.model=*
@@ -52,14 +76,3 @@ on property:ro.product.vendor.model=*
 
 on property:sys.boot_completed=1 && property:vendor.usb.uvc.function.init=1
     write /config/usb_gadget/g1/functions/uvc.0/streaming_maxpacket ${ro.usb.uvc.payload_transfer_size}
-
-# NFC
-service vendor.nfc_hal_service /vendor/bin/hw/android.hardware.nfc@1.2-service
-    override
-    class hal
-    user nfc
-    group nfc
-    disabled
-
-on property:ro.hq.support.nfc=1
-    enable vendor.nfc_hal_service

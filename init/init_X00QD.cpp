@@ -104,26 +104,9 @@ void set_avoid_gfxaccel_config() {
     }
 }
 
-void NFC_check()
-{
-    // Check NFC
-    std::ifstream infile("/proc/NFC_CHECK");
-    std::string check;
-
-    getline(infile, check);
-    if (!check.compare("SUPPORTED")) {
-        property_override("ro.hq.support.nfc", "1");
-        property_override("ro.boot.product.hardware.sku", "NFC");
-    } else
-        property_override("ro.hq.support.nfc", "0");
-}
-
 void vendor_load_properties()
- {    
-    check_device();
+{
     set_avoid_gfxaccel_config();
-    NFC_check();
-
     property_override("dalvik.vm.heapstartsize", heapstartsize.c_str());
     property_override("dalvik.vm.heapgrowthlimit", heapgrowthlimit.c_str());
     property_override("dalvik.vm.heapsize", heapsize.c_str());

@@ -20,8 +20,8 @@ import os
 import sys
 from hashlib import sha1
 
-device='sdm660-common'
-vendor='asus'
+device = 'X00QD'
+vendor = 'asus'
 
 with open('proprietary-files.txt', 'r') as f:
     lines = f.read().splitlines()

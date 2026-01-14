@@ -33,17 +33,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.audio@6.0-impl \
     android.hardware.audio.effect@6.0-impl \
-    android.hardware.audio.service
+    android.hardware.audio.service \
+    android.hardware.soundtrigger@2.3-impl
 
 PRODUCT_PACKAGES += \
-    audio_amplifier.sdm660 \
     audio.bluetooth.default \
-    audio.primary.default \
     audio.r_submix.default \
     audio.usb.default \
-    liba2dpoffload \
     libaudio-resampler \
-    libaudioroute \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
@@ -53,7 +50,8 @@ PRODUCT_PACKAGES += \
     libhdmiedid \
     libhfp \
     libsndmonitor \
-    libspkrprot
+    libspkrprot \
+    libssrec
 
 # Audio Configs
 PRODUCT_COPY_FILES += \
@@ -91,9 +89,6 @@ PRODUCT_PACKAGES += \
     CAFIMSAdapter
 
 # Camera
-PRODUCT_PACKAGES += \
-    camera.sdm660
-
 PRODUCT_PACKAGES += \
     android.hardware.camera.common@1.0 \
     android.hardware.camera.device@3.5 \
@@ -325,6 +320,7 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 
 # Partitions
 PRODUCT_PACKAGES += \
+    factory_mount_point_symlink \
     vendor_dsp_mountpoint \
     vendor_bt_firmware_mountpoint \
     vendor_firmware_mnt_mountpoint
@@ -515,6 +511,10 @@ PRODUCT_BOOT_JARS += \
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal-service.qti
+
+# Thermal configs
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/thermal-engine.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf
 
 # USB
 PRODUCT_PACKAGES += \

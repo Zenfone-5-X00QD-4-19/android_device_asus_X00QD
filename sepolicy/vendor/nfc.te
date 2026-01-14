@@ -1,5 +1,0 @@
-# Set NFC properties
-get_prop(nfc, nfc_nq_prop)
-
-allow nfc nfc_vendor_data_file:dir rw_dir_perms;
-allow nfc nfc_vendor_data_file:file create_file_perms;

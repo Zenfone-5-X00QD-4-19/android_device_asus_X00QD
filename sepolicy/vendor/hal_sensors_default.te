@@ -7,3 +7,11 @@ allow hal_sensors_default debugfs:dir { open read };
 allow hal_sensors_default self:netlink_kobject_uevent_socket { create read };
 allow hal_sensors_default sysfs:dir { open read };
 allow hal_sensors_default sysfs:file { getattr open read write };
+
+set_prop(hal_sensors_default, customize_prop)
+get_prop(hal_sensors_default, sensors_prop)
+set_prop(hal_sensors_default, sensors_prop)
+
+# Factory files
+allow hal_sensors_default factory_file:file rw_file_perms;
+r_dir_file(hal_sensors_default, factory_file)

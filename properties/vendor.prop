@@ -11,6 +11,7 @@ dalvik.vm.image-dex2oat-filter=speed
 dalvik.vm.image-dex2oat-threads=8
 
 # Audio
+ro.hardware.audio.primary=X00QD
 af.fast_track_multiplier=1
 audio.deep_buffer.media=true
 audio.offload.video=true
@@ -81,7 +82,7 @@ vendor.audio.use.sw.alac.decoder=true
 vendor.audio.use.sw.ape.decoder=true
 vendor.audio.volume.headset.gain.depcal=true
 vendor.audio.tunnel.encode=false
-vendor.voice.path.for.pcm.voip=true
+vendor.voice.path.for.pcm.voip=false
 
 # Bluetooth
 persist.vendor.bt.aac_frm_ctl.enabled=true

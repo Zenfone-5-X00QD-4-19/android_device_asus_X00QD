@@ -7,6 +7,13 @@ soong_namespace {
 }
 
 install_symlink {
+    name: "factory_mount_point_symlink",
+    vendor: true,
+    installed_location: "factory",
+    symlink_target: "/vendor/factory",
+}
+
+install_symlink {
     name: "firmware_WCNSS_qcom_cfg.ini_symlink",
     vendor: true,
     installed_location: "firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini",
