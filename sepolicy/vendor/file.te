@@ -22,5 +22,9 @@ type sysfs_sensor, sysfs_type, fs_type;
 
 # X00QD specific partitions
 type demoapp_file, file_type;
-type factory_file, file_type;
 type log_file, file_type;
+type bat_file, file_type;
+type factory_file, file_type;
+type xrom_file, file_type;
+
+type batterystats_file, file_type;

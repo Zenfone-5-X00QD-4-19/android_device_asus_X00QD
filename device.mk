@@ -50,8 +50,7 @@ PRODUCT_PACKAGES += \
     libhdmiedid \
     libhfp \
     libsndmonitor \
-    libspkrprot \
-    libssrec
+    libspkrprot
 
 # Audio Configs
 PRODUCT_COPY_FILES += \
@@ -275,9 +274,10 @@ PRODUCT_PACKAGES += \
 
 # NFC
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_NFC/android.hardware.nfc.hce.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_NFC/android.hardware.nfc.xml \
-    frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_NFC/com.android.nfc_extras.xml
+    frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hce.xml \
+    frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.xml \
+    frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.android.nfc_extras.xml \
+    frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nxp.mifare.xml
 
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf \
@@ -286,6 +286,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.nfc@1.2-service \
     com.android.nfc_extras \
+    SecureElement \
     Tag
 
 # OEM Unlock reporting
@@ -320,7 +321,11 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 
 # Partitions
 PRODUCT_PACKAGES += \
-    factory_mount_point_symlink \
+    vendor_factory_mountpoint \
+    vendor_asdf_mountpoint \
+    vendor_APD_mountpoint \
+    vendor_ADF_mountpoint \
+    vendor_asusfw_mountpoint \
     vendor_dsp_mountpoint \
     vendor_bt_firmware_mountpoint \
     vendor_firmware_mnt_mountpoint
@@ -486,6 +491,7 @@ PRODUCT_COPY_FILES += \
 
 # Soong namespaces
 QCOM_SOONG_NAMESPACE := \
+    hardware/lineage/compat \
     $(DEVICE_PATH)/qcom-caf
 
 # Telephony

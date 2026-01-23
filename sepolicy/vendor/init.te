@@ -1,7 +1,14 @@
-allow init factory_file:dir mounton;
+allow init {
+    xrom_file
+    demoapp_file
+    log_file
+    factory_file
+}:dir mounton;
 
 allow init factory_file:filesystem { mount relabelfrom relabelto };
 allow factory_file self:filesystem associate;
+allow init block_device:blk_file write;
+allow init demoapp_file:lnk_file read;
 allow vendor_init proc_dirty:file write;
 allow init proc:file write;
 dontaudit init bt_firmware_file:filesystem getattr;

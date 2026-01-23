@@ -6,11 +6,34 @@
 soong_namespace {
 }
 
-install_symlink {
-    name: "factory_mount_point_symlink",
+mkdir {
+    name: "vendor_ADF_mountpoint",
+    dir: "ADF",
     vendor: true,
-    installed_location: "factory",
-    symlink_target: "/vendor/factory",
+}
+
+mkdir {
+    name: "vendor_APD_mountpoint",
+    dir: "APD",
+    vendor: true,
+}
+
+mkdir {
+    name: "vendor_asdf_mountpoint",
+    dir: "asdf",
+    vendor: true,
+}
+
+mkdir {
+    name: "vendor_factory_mountpoint",
+    dir: "factory",
+    vendor: true,
+}
+
+mkdir {
+    name: "vendor_asusfw_mountpoint",
+    dir: "asusfw",
+    vendor: true,
 }
 
 install_symlink {

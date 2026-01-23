@@ -34,8 +34,8 @@ on charger
     chown system system /vendor/factory
     chmod 0770 /vendor/factory
 
-    chown root root /asdf
-    chmod 0775 /asdf
+    chown root root /vendor/asdf
+    chmod 0775 /vendor/asdf
 
 # Smart charging
 on boot
@@ -53,10 +53,10 @@ on fs
     chmod 0770 /vendor/factory
     restorecon_recursive /vendor/factory
 
-    chown system system /factory
-    chown system system /factory/*
-    chmod 0775 /factory
-    chmod 0775 /factory/*
+    chown system system /vendor/factory
+    chown system system /vendor/factory/*
+    chmod 0775 /vendor/factory
+    chmod 0775 /vendor/factory/*
 
     chown system system /sys/devices/virtual/sensors/frgbsensor/switch
     chown system system /sys/devices/virtual/sensors/lsensor/adc
