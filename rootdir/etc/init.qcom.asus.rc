@@ -34,6 +34,9 @@ on charger
     chown system system /vendor/factory
     chmod 0770 /vendor/factory
 
+    chown root root /asdf
+    chmod 0775 /asdf
+
     chown root root /vendor/asdf
     chmod 0775 /vendor/asdf
 
@@ -69,10 +72,3 @@ on fs
     chown system system /sys/devices/virtual/sensors/psensor/proxm
     chown system system /sys/devices/virtual/sensors/psensor/selection
     chown system system /sys/devices/virtual/sensors/psensor/switch
-
-# USB
-on property:ro.product.vendor.model=*
-    setprop vendor.usb.product_string ${ro.product.vendor.model}
-
-on property:sys.boot_completed=1 && property:vendor.usb.uvc.function.init=1
-    write /config/usb_gadget/g1/functions/uvc.0/streaming_maxpacket ${ro.usb.uvc.payload_transfer_size}

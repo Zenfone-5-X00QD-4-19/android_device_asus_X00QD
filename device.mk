@@ -467,15 +467,13 @@ PRODUCT_PACKAGES += \
     init.qcom.post_boot.sh \
     init.qti.dcvs.sh \
     init.qcom.sensors.sh \
-    init.qcom.sh \
-    init.qcom.usb.sh
+    init.qcom.sh
 
 PRODUCT_PACKAGES += \
     fstab.qcom \
     fstab.zram \
     init.qcom.asus.rc \
     init.qcom.rc \
-    init.qcom.usb.rc \
     init.recovery.qcom.rc \
     init.target.rc \
     ueventd.qcom.rc
@@ -537,14 +535,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf
 
-# USB
+# Ramdisk-USB
 PRODUCT_PACKAGES += \
-    usb_compositions.conf \
-    android.hardware.usb@1.3-service.basic \
-    android.hardware.usb.gadget-service.qti
+    init.qcom.usb.rc \
+    init.qcom.usb.sh
 
-PRODUCT_VENDOR_PROPERTIES += \
-    vendor.usb.controller=a800000.dwc3
+PRODUCT_SOONG_NAMESPACES += \
+    vendor/qcom/opensource/usb/etc
 
 # Vibrator
 $(call inherit-product, vendor/qcom/opensource/vibrator/vibrator-vendor-product.mk)
