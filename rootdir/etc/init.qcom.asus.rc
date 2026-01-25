@@ -40,26 +40,42 @@ on charger
     chown root root /vendor/asdf
     chmod 0775 /vendor/asdf
 
-# Smart charging
+on post-fs-data
+    chown system system /asdf
+    chown system system /asdf/*
+    chmod 0775 /asdf
+    chmod 0775 /asdf/*
+
+    chown system system /factory
+    chown system system /factory/*
+    chmod 0775 /factory
+    chmod 0775 /factory/*
+
+    chown system system /asusfw
+    chown system system /asusfw/*
+    chmod 0775 /asusfw
+    chmod 0775 /asusfw/*
+
+    chown system system /asusfw/asusfw_version
+    chmod 0775 /asusfw/asusfw_version
+
+    chown system system /ADF
+    chown system system /ADF/*
+    chmod 0775 /ADF
+    chmod 0775 /ADF/*
+
+    chown system system /APD
+    chown system system /APD/*
+
 on boot
     chown system system /sys/class/power_supply/battery/charging_enabled
     chmod 0660 /sys/class/power_supply/battery/charging_enabled
 
-on boot
     # Fingerprint permissions
     chmod 0666 /dev/fpsdev0
     chown system system /dev/fpsdev0
     chmod 0666 /dev/goodix_fp
     chown system system /dev/goodix_fp
-
-on fs
-    chmod 0770 /vendor/factory
-    restorecon_recursive /vendor/factory
-
-    chown system system /vendor/factory
-    chown system system /vendor/factory/*
-    chmod 0775 /vendor/factory
-    chmod 0775 /vendor/factory/*
 
     chown system system /sys/devices/virtual/sensors/frgbsensor/switch
     chown system system /sys/devices/virtual/sensors/lsensor/adc
@@ -72,3 +88,13 @@ on fs
     chown system system /sys/devices/virtual/sensors/psensor/proxm
     chown system system /sys/devices/virtual/sensors/psensor/selection
     chown system system /sys/devices/virtual/sensors/psensor/switch
+
+
+on fs
+    chmod 0770 /vendor/factory
+    restorecon_recursive /vendor/factory
+
+    chown system system /vendor/factory
+    chown system system /vendor/factory/*
+    chmod 0775 /vendor/factory
+    chmod 0775 /vendor/factory/*
