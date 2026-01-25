@@ -25,7 +25,6 @@ namespace_imports = [
     'device/asus/X00QD',
     'device/asus/X00QD/qcom-caf',
     'hardware/qcom-caf/wlan',
-    'hardware/lineage/compat',
     'vendor/qcom/opensource/dataservices',
 ]
 

@@ -25,6 +25,8 @@ type demoapp_file, file_type;
 type log_file, file_type;
 type bat_file, file_type;
 type factory_file, file_type;
+allow factory_file self:filesystem associate;
+type factory_data_file, file_type;
 type xrom_file, file_type;
 
-type batterystats_file, file_type;
+type batterystats_file, file_type, vendor_file_type;

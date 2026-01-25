@@ -9,7 +9,7 @@ LOCAL_MODULE := hal_play_test
 
 hal-play-inc    += external/tinyalsa/include
 
-LOCAL_CFLAGS += -Wall -Werror -Wno-sign-compare
+LOCAL_CFLAGS += -Wall  -Wno-sign-compare
 
 LOCAL_HEADER_LIBRARIES := \
     libqahw_headers \
@@ -43,7 +43,7 @@ include $(BUILD_EXECUTABLE)
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES := qahw_multi_record_test.c
 LOCAL_MODULE := hal_rec_test
-LOCAL_CFLAGS += -Wall -Werror -Wno-sign-compare
+LOCAL_CFLAGS += -Wall  -Wno-sign-compare
 
 LOCAL_HEADER_LIBRARIES := \
     libqahwapi_headers

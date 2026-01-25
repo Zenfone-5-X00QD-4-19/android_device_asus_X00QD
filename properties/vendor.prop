@@ -103,6 +103,14 @@ persist.vendor.camera.HAL3.enabled=1
 persist.vendor.camera.perflock.enable=0
 persist.vendor.camera.dual.isp.sync=0
 
+# Dalvik overrides
+dalvik.vm.heapgrowthlimit=256m
+dalvik.vm.heapstartsize=8m
+dalvik.vm.heapsize=512m
+dalvik.vm.heaptargetutilization=0.75
+dalvik.vm.heapminfree=512k
+dalvik.vm.heapmaxfree=8m
+
 # Display
 debug.sf.enable_hwc_vds=1
 debug.sf.hw=1

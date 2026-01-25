@@ -60,6 +60,17 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/audio_policy_configuration_ZE620KL_24bit.xml \
     $(DEVICE_PATH)/configs/audio/audio_platform_info_intcodec.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml
 
+PRODUCT_VENDOR_PROPERTIES += \
+    persist.vendor.audio.calfile0=/vendor/etc/acdbdata/adsp_avs_config.acdb \
+    persist.vendor.audio.calfile1=/vendor/etc/acdbdata/ZE620KL/ZE620KL_Bluetooth_cal.acdb \
+    persist.vendor.audio.calfile2=/vendor/etc/acdbdata/ZE620KL/ZE620KL_General_cal.acdb \
+    persist.vendor.audio.calfile3=/vendor/etc/acdbdata/ZE620KL/ZE620KL_Global_cal.acdb \
+    persist.vendor.audio.calfile4=/vendor/etc/acdbdata/ZE620KL/ZE620KL_Handset_cal.acdb \
+    persist.vendor.audio.calfile5=/vendor/etc/acdbdata/ZE620KL/ZE620KL_Hdmi_cal.acdb \
+    persist.vendor.audio.calfile6=/vendor/etc/acdbdata/ZE620KL/ZE620KL_Headset_cal.acdb \
+    persist.vendor.audio.calfile7=/vendor/etc/acdbdata/ZE620KL/ZE620KL_Speaker_cal.acdb \
+    persist.vendor.audio.calfile8=/vendor/etc/acdbdata/ZE620KL/ZE620KL_workspaceFile.qwsp
+
 PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
     frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml \
@@ -165,7 +176,12 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service
+    android.hardware.biometrics.fingerprint@2.1-service \
+    fingerprintd \
+    liblzma.vendor
+
+# Firmware
+$(call inherit-product, vendor/asus-firmware/Android.mk)
 
 # FM
 PRODUCT_PACKAGES += \
@@ -223,6 +239,7 @@ PRODUCT_COPY_FILES += \
 # HIDL
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
+    android.hidl.base@1.0.vendor \
     libhidltransport \
     libhidltransport.vendor \
     libhwbinder \
@@ -489,9 +506,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
 
-# Soong namespaces
 QCOM_SOONG_NAMESPACE := \
-    hardware/lineage/compat \
     $(DEVICE_PATH)/qcom-caf
 
 # Telephony

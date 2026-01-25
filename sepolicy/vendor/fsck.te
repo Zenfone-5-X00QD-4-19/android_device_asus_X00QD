@@ -1,7 +1,4 @@
-allow fsck {
-    asus_block_device
-    asdf_block_device
-}:blk_file rw_file_perms;
-
 allow fsck fsck:capability { kill };
 allow fsck sysfs:file getattr;
+allow fsck block_device:blk_file { read write open ioctl };
+allow fsck tmpfs:lnk_file { read open };

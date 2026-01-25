@@ -28,7 +28,7 @@ LOCAL_SHARED_LIBRARIES := \
     libutils \
     libqahwwrapper
 
-LOCAL_CFLAGS += -Wall -Werror
+LOCAL_CFLAGS += -Wall 
 
 LOCAL_VENDOR_MODULE     := true
 

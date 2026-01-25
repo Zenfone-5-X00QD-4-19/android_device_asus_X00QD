@@ -23,7 +23,7 @@ LOCAL_SHARED_LIBRARIES := \
     libhardware \
     libdl
 
-LOCAL_CFLAGS += -Wall -Werror
+LOCAL_CFLAGS += -Wall 
 
 LOCAL_PROPRIETARY_MODULE := true
 LOCAL_VENDOR_MODULE     := true

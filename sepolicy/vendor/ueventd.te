@@ -2,3 +2,6 @@ allow ueventd self:capability sys_nice;
 allow ueventd metadata_file:dir search;
 dontaudit ueventd mba_debug_dev:blk_file { read open };
 allow ueventd ueventd:capability { kill };
+allow ueventd batterystats_file:lnk_file create;
+allow ueventd batterystats_file:blk_file { create setattr getattr };
+allow ueventd tmpfs:lnk_file { create open read write };

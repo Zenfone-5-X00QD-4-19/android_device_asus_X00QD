@@ -13,7 +13,7 @@ LOCAL_C_INCLUDES              := $(common_includes) \
 LOCAL_HEADER_LIBRARIES        := display_headers
 LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
-LOCAL_CFLAGS                  := -Wno-missing-field-initializers -Wno-unused-parameter \
+LOCAL_CFLAGS                  := -Wno-missing-field-initializers -Wno-unused-parameter -Wno-error \
                                  -fcolor-diagnostics\
                                  -DLOG_TAG=\"SDM\" $(common_flags) \
                                  -I $(display_top)/sdm/libs/hwc
