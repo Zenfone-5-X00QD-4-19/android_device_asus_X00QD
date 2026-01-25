@@ -9,8 +9,8 @@ allow kernel block_device:dir { search open read write setattr };
 allow kernel block_device:file { open read write setattr };
 allow kernel batterystats_file:file create_file_perms;
 allow kernel batterystats_file:file { open read write setattr };
-allow kernel batterystats_file:blk_file { open read getattr setattr };
-allow kernel unlabeled:file { open read write };
+allow kernel batterystats_file:blk_file { open read write getattr setattr };
+allow kernel unlabeled:file { open read write getattr setattr  };
 
 # Factory files
 allow kernel factory_file:dir r_dir_perms;

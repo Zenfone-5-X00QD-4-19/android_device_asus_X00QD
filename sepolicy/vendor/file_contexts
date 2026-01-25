@@ -56,4 +56,3 @@
 /(vendor/)?APD/\.bh                                                        u:object_r:batterystats_file:s0
 /(vendor/)?APD/\.bs                                                        u:object_r:batterystats_file:s0
 /dev/block/platform/soc/c0c4000.sdhci/by-name/asuskey3                     u:object_r:batterystats_file:s0
-
