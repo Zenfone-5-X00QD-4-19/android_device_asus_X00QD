@@ -12,6 +12,14 @@
 # Persist
 /persist(/.*)?												u:object_r:mnt_vendor_file:s0
 
+# Device nodes
+/dev/stune(/.*)?	                                                                                                           u:object_r:cgroup:s0
+
+# blkio
+/dev/blkio(/.*)?                                                                                                                  u:object_r:blkio_dev:s0
+/dev/blkio/background(/.*)?                                                                                                       u:object_r:blkio_dev:s0
+
+
 # Sensors
 /sys/devices/virtual/sensors/frgbsensor(/.*)?		u:object_r:sysfs_sensors:s0
 /sys/devices/virtual/sensors/[lp]sensor(/.*)?		u:object_r:sysfs_sensors:s0

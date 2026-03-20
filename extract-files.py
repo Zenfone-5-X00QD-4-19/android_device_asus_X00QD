@@ -24,6 +24,7 @@ extract_utils.tools.DEFAULT_PATCHELF_VERSION = '0_9'
 namespace_imports = [
     'device/asus/X00QD',
     'device/asus/X00QD/qcom-caf',
+    'hardware/qcom-caf/common/libqti-perfd-client',
     'hardware/qcom-caf/wlan',
     'vendor/qcom/opensource/dataservices',
 ]

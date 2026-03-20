@@ -202,6 +202,9 @@ TARGET_COPY_OUT_VENDOR := vendor
 
 AB_OTA_UPDATER := false
 
+# Exclude QCOM powerhal manifest
+TARGET_PROVIDES_POWERHAL := true
+
 BOARD_ROOT_EXTRA_SYMLINKS := \
     /mnt/vendor/persist:/persist \
     /vendor/ADF:/ADF \
@@ -214,7 +217,6 @@ BOARD_ROOT_EXTRA_SYMLINKS := \
 TARGET_BOARD_PLATFORM := sdm660
 
 # Power
-TARGET_USES_INTERACTION_BOOST := true
 TARGET_TAP_TO_WAKE_NODE := "/sys/bus/i2c/devices/4-0038/dclick_mode"
 
 # Properties
@@ -237,6 +239,7 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 ENABLE_VENDOR_RIL_SERVICE := true
 
 # Sepolicy
+include device/lineage/sepolicy/libperfmgr/sepolicy.mk
 include device/qcom/sepolicy-legacy-um/SEPolicy.mk
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private

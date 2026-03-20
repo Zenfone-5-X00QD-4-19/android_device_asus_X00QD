@@ -81,9 +81,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     com.dsi.ant@1.0.vendor
 
-# Boot animation
-TARGET_BOOTANIMATION_HALF_RES := true
-
 # Bluetooth
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.1 \
@@ -396,24 +393,14 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.0 \
-    android.hardware.power@1.0.vendor \
-    android.hardware.power@1.1 \
-    android.hardware.power@1.1.vendor \
-    android.hardware.power@1.2 \
-    android.hardware.power@1.2.vendor \
-    android.hardware.power@1.3 \
     android.hardware.power@1.3.vendor \
-    android.hardware.power-service-qti
+    android.hardware.power-service.lineage-libperfmgr \
+    libpower.vendor \
+    libqti-perfd-client
 
-# Perf
-PRODUCT_PACKAGES += \
-   libtflite \
-   libtextclassifier_hash \
-   vendor.qti.hardware.perf@2.2.vendor
-
+# Powerhint
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/perf/perf-profile0.conf:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perf-profile0.conf    
+    $(DEVICE_PATH)/configs/sdm636_powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
 # Public Libraries
 PRODUCT_COPY_FILES += \
@@ -456,10 +443,6 @@ PRODUCT_PACKAGES += \
 # Remove unwanted packages
 PRODUCT_PACKAGES += \
     RemovePackages
-
-# Recovery
-PRODUCT_PACKAGES += \
-    librecovery_updater_asus
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -507,6 +490,12 @@ PRODUCT_COPY_FILES += \
 QCOM_SOONG_NAMESPACE := \
     $(DEVICE_PATH)/qcom-caf
 
+PRODUCT_SOONG_NAMESPACES += \
+    $(DEVICE_PATH) \
+    hardware/google/interfaces \
+    hardware/google/pixel \
+    hardware/lineage/interfaces/power-libperfmgr
+
 # Telephony
 PRODUCT_PACKAGES += \
     libshim_imscamera \
@@ -534,6 +523,10 @@ PRODUCT_PACKAGES += \
 # Thermal configs
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf
+
+# USB
+PRODUCT_PACKAGES += \
+    android.hardware.usb@1.3-service.basic
 
 # Ramdisk-USB
 PRODUCT_PACKAGES += \

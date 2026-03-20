@@ -1,3 +1,4 @@
 # Biometrics
 type fingerprintd_device, dev_type;
 type latency_device, dev_type;
+type blkio_dev, dev_type;

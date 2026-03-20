@@ -5,6 +5,8 @@ set_prop(vendor_init, customize_prop)
 
 allow init adsprpcd_file:file mounton;
 allow vendor_init proc:file w_file_perms;
+allow vendor_init proc_sched:file w_file_perms;
+allow vendor_init cache_file:dir search;
 
 # Allow vendor_init to set persist_camera_prop
 set_prop(vendor_init, vendor_persist_camera_prop)

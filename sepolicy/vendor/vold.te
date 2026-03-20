@@ -7,3 +7,4 @@ allow vold sysfs_mmc_host:file create_file_perms;
 allow vold factory_file:dir { ioctl open read };
 allow vold demoapp_file:dir { ioctl open read };
 allow vold log_file:dir { ioctl open read };
+allow vold mnt_vendor_file:dir { ioctl open read };
